@@ -1,0 +1,60 @@
+package member.model.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import common.JdbcTemplate;
+import member.model.vo.Member;
+
+public class MemberDao {
+
+	public int insertMember(Connection conn, Member member) {
+		String sql = "insert into member "
+				   + "values(?, ?, ?, ?, ?, ?, default)";
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		try {
+			// 1. PreparedStatement 생성 (미완성 sql & 값대입)
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member.getId());
+			pstmt.setString(2, member.getName());
+			pstmt.setString(3, member.getGender());
+			pstmt.setDate(4, member.getBirthday());
+			pstmt.setString(5, member.getEmail());
+			pstmt.setString(6, member.getAddress());
+			
+			// 2. 실행 
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// 3. 자원반납(pstmt) - conn 반환하지마세요(트랜잭션 처리전입니다)
+			JdbcTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public List<Member> findMemberByName(Connection conn, String name) {
+		String sql = "select * from member where name like ?";
+		List<Member> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		// 1. PreparedStatement 객체 생성(미완성sql전달 & 값대입)
+		
+		// 2. 실행 
+		
+		// 3. ResultSet처리 -> Member객체 변환
+		
+		// 4. 자원반납(pstmt, rset)
+		
+		return list;
+	}
+
+}

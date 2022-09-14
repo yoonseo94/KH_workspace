@@ -1,0 +1,4 @@
+# member-query.properties
+insertMember = insert into member values(?, ?, ?, ?, ?, ?, default)
+findMemberByName = select * from member where name like ?
+selectOne = select * from member where id = ?

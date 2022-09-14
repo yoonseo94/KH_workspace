@@ -1,0 +1,5 @@
+package com.kh.student.model.dto;
+
+public class Student {
+
+}

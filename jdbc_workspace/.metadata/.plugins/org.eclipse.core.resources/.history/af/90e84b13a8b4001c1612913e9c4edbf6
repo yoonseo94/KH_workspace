@@ -1,0 +1,20 @@
+package com.kh.employee.model.vo;
+
+import java.sql.Date;
+
+public class Employee {
+	private String empId;
+	private String empName;
+	private String empNo;
+	private String email;
+	private String phone;
+	private Department dept;
+	private Job job;
+	private String salLevel;
+	private int salary;
+	private Double bonus; 		// 기본형 double은 null을 처리할 수 없다. null데이터처리하는 경우, wrapper type사용.
+	private Employee manager;
+	private Date hireDate;
+	private Date quitDate;
+	private String quitYN;
+}

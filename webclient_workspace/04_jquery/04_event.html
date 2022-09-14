@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>event</title>
+  <script src="js/jquery-3.6.0.js"></script>
+</head>
+<body>
+  <h1>event</h1>
+  <div class="outer">
+    <div class="inner"></div>
+  </div>
+  <style>
+  .outer {
+    width: 200px;
+    height: 200px;
+    background-color: orange;
+    padding: 50px;
+    margin: 20px auto;
+  }
+  .inner {
+    width: 100%;
+    height: 100%;
+    background-color: tomato;
+  }
+  </style>
+  <script>
+  /**
+   * 이벤트명과 동일한 핸들러 바인딩메소드를 제공한다.
+   * 
+   * mouseover | mouseout
+   * - 자식요소 접근시에도 이벤트핸들링된다.
+   * 
+   * mouseenter | mouseleave
+   * - 자식요소 접근시에도 이벤트핸들링하지 않는다.
+   * 
+   * hover(mouseneter handler, mouseleave handler)
+   * - 편의메소드
+   */
+  $(".outer")
+    // .mouseover(() => {
+    //   console.log("mouseover");
+    // })
+    // .mouseout(() => {
+    //   console.log("mouseout");
+    // })
+    // .mouseenter(() => {
+    //   console.log("mouseenter");
+    // })
+    // .mouseleave(() => {
+    //   console.log("mouseleave");
+    // })
+    .hover(() => {
+      console.log("mouseenter");
+    }, () => {
+      console.log("mouseleave");
+    });
+  </script>
+
+  <button id="btn1">클릭미!</button>
+  <button id="btn2">한번만 클릭미!</button>
+  <script>
+  /**
+   * on/off 이벤트핸들러
+   * - on 핸들러바인딩 -> addEventListener
+   * - off 핸들러언바인딩(제거) -> removeEventListener(이벤트핸들러 반드시 지정)
+   */
+  $(btn1).on('click', (e) => {
+    console.log('#btn1 클릭!');
+    // 한번 클릭후 이벤트핸들러 제거
+    $(e.target).off('click');
+  });
+
+  $(btn2).one('click', (e) => {
+    console.log("#btn2 클릭! 처음이자 마지막!");
+  });
+  </script>
+
+  <!-- div#heading-wrapper>h2{안녕} -->
+  <div id="heading-wrapper" class="heading-wrapper">
+    <h2>안녕</h2>
+  </div>
+  <div id="heading-wrapper2" class="heading-wrapper">
+    <h2>잘가</h2>
+    <h3>byebye</h3>
+  </div>
+  <style>
+  .heading-wrapper {
+    border: 1px solid gray;
+    padding: 5px;
+    margin: 5px 0;
+  }
+  </style>
+  <script>
+  let num = 0;
+  const generateH2 = () => {
+    // 새 h2태그를 추가
+    const $h2 = $(`<h2>안녕${++num}</h2>`); // html을 동적으로 생성
+    $("#heading-wrapper").append($h2); // 자식요소로 마지막에 추가
+
+    $h2.on('click', generateH2); // 새요소도 핸들러바인딩
+  };
+  $("#heading-wrapper > h2").on('click', generateH2);
+
+
+  /**
+   * 이벤트 버블링으로 처리하기
+   * 
+   * on(eventName, targetSelector, handler)
+   */
+  $("#heading-wrapper2").on('click', 'h2', (e) => {
+    console.log("#heading-wrapper2 핸들러 호출", e.target);
+
+    const $h2 = $("<h2>잘가</h2>");
+    $("#heading-wrapper2").append($h2);
+  });
+  </script>
+
+  <form name="tweeterFrm" action="javascript:alert('제출성공'); document.tweeterFrm.reset();">
+    <fieldset>
+      <legend>트위터</legend>
+      <p><span id="counter">0</span>/30</p>
+      <textarea name="tweeter" id="tweeter" cols="30" rows="10"></textarea>
+      <br>
+      <input type="submit" value="제출">
+    </fieldset>
+  </form>
+  <script>
+  const MAX = 30;
+  $(tweeter).keyup((e) => {
+    // console.log(e.target.value.length, $(e.target).val().length);
+    const len = $(e.target).val().length;
+    $(counter)
+      .html(len)
+      .css('color', len > MAX ? 'red' : 'black');
+  });
+
+  /**
+   * submit handler 
+   * -> submit
+   * -> e.preventDefault() 또는 return false; 제출되지 않음.
+   */
+  $(document.tweeterFrm).submit((e) => {
+    if($(tweeter).val().length > MAX){
+      alert("30글자를 초과할 수 없습니다.");
+      // return false;
+      e.preventDefault();
+    }
+  });
+  </script>
+
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

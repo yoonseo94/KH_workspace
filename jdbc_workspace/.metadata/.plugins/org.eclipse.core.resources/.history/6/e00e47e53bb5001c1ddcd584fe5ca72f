@@ -1,0 +1,7 @@
+package com.kh.employee.model.vo;
+
+public class Department {
+	private String detpId;
+	private String deptTitle;
+	private Location location;
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;sql&apos; to &apos;03_Properties_ExceptionHandling&apos;&#x0D;&#x0A;- Original project: &apos;01_Statement&apos;&#x0D;&#x0A;- Destination element: &apos;03_Properties_ExceptionHandling&apos;&#x0D;&#x0A;- Original element: &apos;sql&apos;" description="Copy folder" destination="=03_Properties_ExceptionHandling" element1="sql" files="0" flags="589830" folders="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1648781870222" units="0" version="1.0"/>
+</session>

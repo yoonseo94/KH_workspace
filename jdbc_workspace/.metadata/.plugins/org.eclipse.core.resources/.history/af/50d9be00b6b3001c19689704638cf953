@@ -1,0 +1,317 @@
+package com.kh.product.view;
+
+import static com.kh.product.model.service.ProductService.PRODUCT_INPUT;
+import static com.kh.product.model.service.ProductService.PRODUCT_OUTPUT;
+
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.List;
+import java.util.Scanner;
+
+import com.kh.product.controller.ProductController;
+import com.kh.product.model.vo.Product;
+import com.kh.product.model.vo.ProductIO;
+
+public class ProductMenu {
+	private Scanner sc = new Scanner(System.in);
+	private ProductController productController = new ProductController();
+
+	public void mainMenu() {
+		String menu = "***** 상품 재고관리 프로그램 *****\r\n" + "1. 전체상품조회\r\n" + "2. 상품검색\r\n" + "3. 상품등록\r\n" + "4. 상품정보변경\r\n"
+				+ "5. 상품삭제\r\n" + "6. 상품입/출고 메뉴\r\n" + "0. 프로그램종료\r\n" + "**************************\r\n" + "메뉴선택 : ";
+
+		while (true) {
+			System.out.println();
+			// 메뉴출력
+			System.out.print(menu);
+			// 사용자메뉴선택
+			String choice = sc.next();
+
+			switch (choice) {
+			case "1":
+				displayProductList(productController.selectProductList());
+				break;
+			case "2":
+				searchProductMenu();
+				break;
+			case "3":
+				System.out.println(productController.insertProduct(inputProduct()) > 0 ? "> 상품 등록 성공!" : "> 상품 등록 실패!");
+				break;
+			case "4":
+				updateProductMenu(singleoutProduct("수정"));
+				break;
+			case "5":
+				;
+				System.out.println(
+						productController.deleteProduct(singleoutProduct("삭제")) > 0 ? "> 상품 삭제 성공!" : "> 상품 삭제 실패!");
+				;
+				break;
+			case "6":
+				productIOMenu(singleoutProduct("입출고"));
+				break;
+			case "9":
+				System.out.print("정말로 끝내시겠습니까?(y/n) : ");
+				if ('y' == sc.next().toLowerCase().charAt(0))
+					return;
+				break;
+			default:
+				System.out.println("번호를 잘못 입력하셨습니다.");
+			}
+		}
+	}
+
+	/**
+	 * 수정/삭제/입출고를 위해 상품 선택하기
+	 * 
+	 * @return product.id
+	 */
+	private String singleoutProduct(String next) {
+		Product product = null;
+		List<Product> list = productController.selectProductList();
+		do {
+			System.out.printf("> %s 할 상품을 선택하세요.%n", next);
+			System.out.println("---------------------------------");
+			for (int i = 0; i < list.size(); i++) {
+				Product p = list.get(i);
+				System.out.printf("%d. %s[%s](%s)%n", (i + 1), p.getName(), p.getBrand(), p.getId());
+			}
+			System.out.println("0. 메인메뉴로 돌아가기");
+			System.out.println("---------------------------------");
+			System.out.print("선택 : ");
+			int index = sc.nextInt() - 1;
+			if (index < 0 || index >= list.size())
+				return null; // 0번 메인메뉴로 돌아가기
+			else {
+				product = list.get(index);
+			}
+		} while (product == null);
+
+		return product.getId();
+	}
+
+	/**
+	 * 상품정보 수정 메뉴 1. 수정메뉴 보이기전에 수정할 상품을 출력/선택할 수 있도록 함. 2. 선택한 상품 정보를 출력후 수정메뉴 제공.
+	 * 2. 선택한 메뉴에 해당하는 컬럼을 수정처리 3. 다시 수정메뉴가 보이기전에 해당 상품정보 출력해서 변경사항을 확인하도록 함.
+	 */
+	private void updateProductMenu(String productId) {
+		if (productId == null)
+			return;
+
+		Product product = null;
+		// 2. 수정메뉴 출력
+		String menu = "***** 상품정보 변경 메뉴 *****\r\n" + "1.상품명변경\r\n" + "2.가격변경\r\n" + "3.사양변경\r\n" + "0.메인메뉴로 돌아가기\r\n"
+				+ "---------------------------------\r\n" + "선택 : ";
+
+		while (true) {
+			// 선택 상품 출력
+			displayProduct(product = productController.selectOneProduct(product.getId()));
+
+			System.out.println();
+			System.out.print(menu);
+			String choice = sc.next();
+
+			switch (choice) {
+			case "1":
+				System.out.print("> 변경할 상품명 : ");
+				product.setName(sc.next());
+				break;
+			case "2":
+				System.out.print("> 변경할 가격 : ");
+				product.setPrice(sc.nextInt());
+				break;
+			case "3":
+				System.out.print("> 변경할  모니터 사이즈(inch) : ");
+				product.setMonitorSize(sc.nextInt());
+				System.out.print("> 변경할  운영체제 : ");
+				product.setOs(sc.next());
+				System.out.print("> 변경할  저장공간(GB) : ");
+				product.setStorage(sc.nextInt());
+				break;
+			case "0":
+				return;
+			default:
+				System.out.println("잘못 입력하셨습니다.");
+				continue;
+			}
+
+			System.out.println();
+			System.out.println(productController.updateProduct(product) > 0 ? "> 상품정보 수정 성공!" : "> 상품정보 수정 실패!");
+
+		}
+
+	}
+
+	/**
+	 * 검색메뉴 - 아이디, 상품명 모두 일부 텍스트로 검색이 가능 - 영문 검색어인 경우 대소문자 구분 없이 처리하기 위해 where조건절에
+	 * lower함수를 적용
+	 */
+	private void searchProductMenu() {
+		String menu = "***** 상품검색 메뉴 *****\r\n" + "1.아이디 검색\r\n" + "2.상품명 검색\r\n" + "0.메인메뉴로 돌아가기\r\n"
+				+ "********************\r\n" + "선택 : ";
+
+		while (true) {
+			System.out.println();
+			System.out.print(menu);
+			String choice = sc.next();
+			String column = null;
+			switch (choice) {
+			case "1":
+				column = "id";
+				break;
+			case "2":
+				column = "name";
+				break;
+			case "0":
+				return;
+			default:
+				System.out.println("번호를 잘못 입력하셨습니다.");
+				continue;
+			}
+			System.out.print("> 검색어를 입력하세요 : ");
+			String keyword = sc.next();
+			displayProductList(productController.searchProductBy(column, keyword));
+		}
+
+	}
+
+	/**
+	 * 상품 등록 메소드
+	 * 
+	 * @return
+	 */
+	private Product inputProduct() {
+		System.out.println("새 상품정보를 입력하세요 :");
+		System.out.print("상품아이디 : ");
+		String id = sc.next();
+		System.out.print("브랜드 : ");
+		String brand = sc.next();
+		sc.nextLine();
+		System.out.print("상품명 : ");
+		String name = sc.nextLine();
+		System.out.print("가격 : ");
+		int price = sc.nextInt();
+		System.out.print("모니터사이즈(inch) : ");
+		int monitorSize = sc.nextInt();
+		System.out.print("운영체제 : ");
+		String os = sc.next();
+		System.out.print("저장공간(GB) : ");
+		int storage = sc.nextInt();
+		return new Product(id, brand, name, price, monitorSize, os, storage, null, 0);
+	}
+
+	/**
+	 * 입출고메뉴
+	 */
+	private void productIOMenu(String productId) {
+		if (productId == null)
+			return;
+
+		String menu = "\n***** 상품입출고메뉴*****\n" + "1. 전체입출고내역조회\n" + "2. 상품입고\n" + "3. 상품출고\n" + "0. 메인메뉴로 돌아가기\n"
+				+ "메뉴선택 : ";
+		String choice = null;
+		while (true) {
+			// io메뉴출력
+			System.out.print(menu);
+			// 사용자메뉴선택
+			choice = sc.next();
+
+			ProductIO pio = null;
+			int result = 0;
+
+			switch (choice) {
+			case "1":
+				displayProductIOList(productController.selectProductIOList(productId));
+				break;
+			case "2":
+				pio = inputProductIO(productId, PRODUCT_INPUT);
+				result = productController.insertProductIO(pio);
+				System.out.println(result > 0 ? "> 상품 입고 성공!" : "> 상품 입고 실패!");
+				break;
+			case "3":
+				pio = inputProductIO(productId, PRODUCT_OUTPUT);
+				// 출고량 유효성 검사(view/controller/service 중에서 반드시 진행할 것.)
+//				Product p = productController.selectOneProduct(productId);
+//				if(p.getStock() < pio.getCount()) {
+//					System.out.println("> 출고량이 재고량보다 많을 수 없습니다.");
+//					break;
+//				}
+				result = productController.insertProductIO(pio);
+				System.out.println(result > 0 ? "> 상품 출고 성공!" : "> 상품 출고 실패!");
+				break;
+			case "0":
+				return;
+			default:
+				System.out.println("번호를 잘못 입력하셨습니다.");
+			}
+		}
+	}
+
+	/**
+	 * 상품입출고 객체 생성 메소드
+	 * 
+	 * @param productId
+	 * @param status
+	 * @return
+	 */
+	private ProductIO inputProductIO(final String productId, final String status) {
+		ProductIO pio = new ProductIO();
+		pio.setProductId(productId);
+		pio.setStatus(status);
+		System.out.print(status.equals(PRODUCT_INPUT) ? "> 입고 수량 입력 : " : "> 출고 수량 입력 :");
+		pio.setCount(sc.nextInt());
+		return pio;
+	}
+
+	public void displayProductList(List<Product> list) {
+		if (list == null || list.isEmpty())
+			System.out.println("\n> 조회된 상품이 없습니다.");
+		else {
+			System.out.println("\n> 조회된  상품정보는 다음과 같습니다.");
+			System.out.println(
+					"------------------------------------------------------------------------------------------------------------");
+			System.out.println("id\t\tbrand\tname\t\tprice\t\tspec\t\t\t\tstock");
+			System.out.println(
+					"------------------------------------------------------------------------------------------------------------");
+			for (Product p : list) {
+				System.out.println(p);
+			}
+			System.out.println(
+					"------------------------------------------------------------------------------------------------------------");
+		}
+	}
+
+	/**
+	 * @param list
+	 */
+	public void displayProductIOList(List<ProductIO> list) {
+		if (list == null || list.isEmpty())
+			System.out.println("\n> 조회된  입출고내역이 없습니다.");
+		else {
+			System.out.println("\n> 조회된  입출고내역정보는 다음과 같습니다.");
+			System.out.println("> 현재 재고 수량 : " + list.get(0).getStock());
+			System.out.println("----------------------------------------------------------------------");
+			System.out.println("no\tproductId\tproductName\tbrand\tcount\tI/O\tioDatetime");
+			System.out.println("----------------------------------------------------------------------");
+			for (ProductIO pio : list) {
+				System.out.println(pio);
+			}
+			System.out.println("----------------------------------------------------------------------");
+		}
+	}
+
+	public void displayProduct(Product p) {
+		System.out.println("\n> 조회된 상품정보는 다음과 같습니다.");
+		System.out.println("-------------------------------------");
+		System.out.println("상품아이디 : " + p.getId());
+		System.out.println("브랜드 : " + p.getBrand());
+		System.out.println("상품명 : " + p.getName());
+		System.out.println("가격 : " + new DecimalFormat("#,###").format(p.getPrice()) + "원");
+		System.out.println("모니터사이즈: " + p.getMonitorSize() + "inch");
+		System.out.println("운영체제: " + p.getOs());
+		System.out.println("저장공간: " + p.getStorage() + "GB");
+		System.out.println("현재 재고수량: " + p.getStock());
+		System.out.println("상품 등록일: " + new SimpleDateFormat("yyyy/MM/dd").format(p.getRegDate()));
+		System.out.println("-------------------------------------");
+	}
+
+}

@@ -1,0 +1,6 @@
+package kh.java.pattern.strategy;
+
+public class Person {
+	private String name;
+	private Pet pet; // Person은 Dog, Cat의 존재를 몰라도 Pet타입으로 제어할 수 있다.
+}

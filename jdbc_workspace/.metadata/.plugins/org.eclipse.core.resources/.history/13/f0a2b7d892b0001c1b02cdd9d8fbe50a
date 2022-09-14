@@ -1,0 +1,20 @@
+package member.controller;
+
+import member.model.service.MemberService;
+import member.model.vo.Member;
+
+/**
+ * controller클래스
+ * - service단 업무요청
+ *
+ */
+public class MemberController {
+
+	private MemberService memberService = new MemberService();
+	
+	public int insertMember(Member member) {
+		
+		return 0;
+	}
+
+}

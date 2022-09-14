@@ -1,0 +1,57 @@
+package member.model.service;
+
+import java.sql.DriverManager;
+
+import member.model.dao.MemberDao;
+import member.model.vo.Member;
+
+/**
+ * service 클래스
+ * 
+ * ------------------------------------------ Service 시작
+ * 1. 드라이버클래스 등록
+ * 2. Connection객체 생성(setAutoCommit(false))
+ * ------------------------------------------------ Dao 시작
+ * 		3. PreparedStatement객체 생성(미완성 sql 값대입)
+ * 		4. 실행 (및 ResultSet처리)
+ * 		5. 자원반납(pstmt, rset)
+ * ------------------------------------------------ Dao 끝
+ * 6. 트랜잭션처리
+ * 7. 자원반납 (conn)
+ * ------------------------------------------ Service 끝
+ *  
+ *
+ */
+public class MemberService {
+	
+	String driverClass = "oracle.jdbc.OracleDriver"; // 드라이버클래스명
+	String url = "jdbc:oracle:thin:@localhost:1521:xe"; // 접속할 db서버주소 (db접속프로토콜@ip:port:sid)
+	String user = "student";
+	String password = "student";
+
+	private MemberDao memberDao = new MemberDao();
+
+	public int insertMember(Member member) {
+		Connection conn = null;
+		try {
+			// 1. driver class 등록
+			Class.forName(driverClass);
+
+			// 2. Connection 생성(setAutoCommit(false))
+			conn = DriverManager.getConnection(url, user, password);
+			// 3. dao 요청 및 리턴
+			
+			// 4. 트랜잭션처리
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		
+		// 5. 자원반납
+		
+		return 0;
+	}
+	
+	
+	
+}

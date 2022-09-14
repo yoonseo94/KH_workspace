@@ -1,0 +1,6 @@
+# member-query.properties
+insertMember = insert into member values(?, ?, ?, ?, ?, ?, default)
+findMemberByName = select * from member where name like ?
+selectOne = select * from member where id = ?
+updateMember = update member set # = ? where idddddddd = ?
+selectAll = select * from member order by reg_date desc

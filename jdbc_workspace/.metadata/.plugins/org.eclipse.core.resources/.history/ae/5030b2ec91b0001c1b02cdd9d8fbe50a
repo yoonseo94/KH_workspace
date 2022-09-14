@@ -1,0 +1,93 @@
+package member.view;
+
+import java.util.Scanner;
+
+import member.controller.MemberController;
+import member.model.vo.Member;
+
+/** 
+ * view단 클래스
+ * - 메뉴노출, 사용자입력값처리, 결과값출력
+ * 
+ */
+public class MemberMenu {
+	private Scanner sc = new Scanner(System.in);
+	private MemberController memberController = new MemberController(); 
+	
+	public void mainMenu() {
+		String menu = "===== 회원관리 =====\n"
+					+ "1. 회원 전체 조회\n"
+					+ "2. 회원 아이디 조회\n"
+					+ "3. 회원 이름 검색\n"
+					+ "4. 회원 가입\n"
+					+ "5. 회원 정보 변경\n"
+					+ "6. 회원 탈퇴\n"
+					+ "0. 프로그램 종료\n"
+					+ "------------------\n"
+					+ "선택 : ";
+		while(true) {
+			System.out.print(menu);
+			String choice = sc.next();
+			
+			Member member = null;
+			int result = 0;
+			
+			switch (choice) {
+			case "1": break;
+			case "2": break;
+			case "3": break;
+			case "4": 
+				member = inputMember();
+				result = memberController.insertMember(member);
+				printResultMsg(result, "회원 가입 성공!", "회원 가입 실패!");
+				break;
+			case "5": break;
+			case "6": break;
+			case "0": return;
+			default:
+				System.out.println("잘못 입력하셨습니다.");
+			}
+		}
+	}
+
+	/**
+	 * 신규회원정보를 입력받는 메소드
+	 * @return
+	 */
+	private Member inputMember() {
+		Member member = new Member();
+		System.out.println("> 신규회원정보를 입력하세요.");
+		System.out.print("아이디 :");
+		member.setId(sc.next());
+		System.out.print("이름 :");
+		member.setName(sc.next());
+		System.out.print("성별(M/F) :");
+		member.setGender(String.valueOf(sc.next().toUpperCase().charAt(0)));
+		System.out.print("아이디 :");
+		member.setId(sc.next());
+		System.out.print("아이디 :");
+		member.setId(sc.next());
+		System.out.print("아이디 :");
+		member.setId(sc.next());
+		
+		
+		
+		return null;
+	}
+
+	/**
+	 * DML 처리 결과를 출력하는 메소드
+	 * @param result
+	 * @param successMsg
+	 * @param failureMsg
+	 */
+	private void printResultMsg(int result, String successMsg, String failureMsg) {
+		if(result > 0)
+			System.out.println("> " + successMsg);
+		else
+			System.out.println("> " + failureMsg);
+	}
+	
+	
+
+}

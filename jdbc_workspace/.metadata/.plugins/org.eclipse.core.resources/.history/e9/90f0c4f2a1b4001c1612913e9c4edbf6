@@ -1,0 +1,6 @@
+package com.chun.student.model.vo;
+
+public class ClassProfessor {
+	private Class clazz;
+	private Professor professor;
+}

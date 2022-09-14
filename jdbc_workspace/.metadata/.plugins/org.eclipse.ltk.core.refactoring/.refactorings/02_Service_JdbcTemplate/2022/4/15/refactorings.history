@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy package &apos;common&apos; to &apos;jdbc-vo-sample/src&apos;&#x0D;&#x0A;- Original project: &apos;02_Service_JdbcTemplate&apos;&#x0D;&#x0A;- Destination element: &apos;jdbc-vo-sample/src&apos;&#x0D;&#x0A;- Original element: &apos;02_Service_JdbcTemplate/src/common&apos;" description="Copy package" destination="=jdbc-vo-sample/src" element1="/src&lt;common" flags="589830" fragments="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1649139123519" version="1.0"/>
+</session>

@@ -1,0 +1,16 @@
+package kh.java.pattern.strategy;
+
+public class Main {
+	
+	public static void main(String[] args) {
+		Main main = new Main();
+		main.test1();
+	}
+
+	private void test1() {
+		Person chulsu = new Person("철수", new Dog("구리구리")); 	// 반려견 
+		Person young = new Person(); 	// 반려묘
+		
+	}
+	
+}

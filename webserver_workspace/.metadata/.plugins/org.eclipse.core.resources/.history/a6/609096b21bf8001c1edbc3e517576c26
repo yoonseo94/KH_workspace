@@ -1,0 +1,14 @@
+package mybatis.test;
+
+public class MybatisTest {
+
+	public static void main(String[] args) {
+		MybatisTest instance = new MybatisTest();
+		instance.test1();
+	}
+
+	private void test1() {
+		
+	}
+
+}

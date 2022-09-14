@@ -1,0 +1,130 @@
+@charset "UTF-8";
+#product-view-cont{display:flex;  flex-direction: column; flex-wrap: nowrap;width: 70%; margin: 0 auto;}
+#product-view-1{width: 90%; margin: 0 auto;}
+#product-view-2{width: 68%; margin: 0 auto;}
+#product-view-1 li{list-style: none;}
+#product-view-1 a{text-decoration: none;}
+.commerce-category-breadcrumb{display:flex; margin: 0;}
+.production-selling-overview-container-row{display:flex;}
+.link{color: #757575; font-weight: bold; font-size: 0.9rem;}
+.production-selling-header-title-brand{  
+	color: #656e75;
+    font-weight: 700;
+    transition: opacity .1s;
+    margin-bottom: 0;
+   }
+.production-selling-header-title-brand-wrap{ margin-bottom: 0;}
+.production-selling-header-title-name-wrap{padding: 0; margin-top: 1rem;}
+.production-selling-header-title-name{   
+	font-size: 1.8rem;
+    line-height: 2rem;
+    min-height: 2.7rem;
+    font-weight: bold;
+    color: #000;
+    }
+.production-selling-header-content, .production-selling-header-price, .discount-wrapper, .production-selling-header-info-wrap, .production-selling-header-delivery,  .production-selling-header-delivery-title-wrap, .production-selling-header-delivery-content-wrap, .production-selling-header-delivery-content-wrap div{padding: 0; }    
+.production-selling-header-price-discount .number, .production-selling-header-price-discount .percent{
+	color: #656e75;
+    font-size: 1.4rem;
+    font-weight: bold;
+    line-height: 1.2rem;
+    }
+.production-selling-header-price-original .number, .production-selling-header-price-original .won{
+	color: #BDBDBD;
+    font-size: 1.4rem;
+    font-weight: bold;
+    line-height: 1.2rem;
+}
+.production-selling-header-price-price .number, .production-selling-header-price-price .won{
+	color: #000;
+	font-size: 3rem;
+	font-weight: bold;
+	line-height: 1.2rem;
+}
+.production-selling-header-price-original{text-decoration: line-through; color:  #BDBDBD;}
+.production-selling-header-price-separator{color: #BDBDBD;}
+.production-selling-header-price-price-wrap{display:flex; flex-direction: column; justify-content: space-evenly; height: 6rem;}
+.production-selling-cover-image-list{
+	display:flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	height: 13rem;
+	margin: 0;
+}
+.production-selling-cover-image-list-btn{
+	display: inline-block;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 56px;
+    height: 56px;
+    border: none;
+    background-color: #ededed;
+    overflow: hidden;
+    border-radius: 4px;
+    cursor: pointer;
+    }
+.btn-image{    
+	position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    transition: transform .2s;
+    }
+.production-selling-cover-image-container {
+    position: relative;
+}
+.carousel-production-selling-cover-image{
+	position: relative;
+	display: flex;
+    align-items: flex-start;
+    flex-direction: row-reverse
+    }
+.carousel-list-wrap{border-radius: 10px; overflow: hidden; flex: 1 0 0px;}    
+.carousel-list{
+	display: flex;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    min-height: 100%;
+    width: 40rem;
+    height: 40rem;
+   }    
+.carousel-list-entry{
+	flex: 0 0 auto;
+    box-sizing: border-box;
+    }    
+.production-selling-cover-image-entry-image{
+	position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border: 0;
+    border-radius: 5px;
+    } 
+.production-selling-header-info-wrap{ margin-top: 2rem;}   
+.production-selling-header-delivery-title-wrap{font-size: 1.5rem; font-weight: bold;}
+.production-selling-header-delivery-content-wrap{display:flex; flex-direction: column; justify-content: space-around; font-size: 1.2rem; margin: 1rem 0; height: 6rem;}
+.product-detail-description-view-wrapper{margin: 0 auto;}
+.production-selling-cover-image-entry-image{width: 100%;}
+.production-selling-option-form-footer{padding: 0;}
+.production-des-image{width: 100%;}
+.cart-btn, .buy-btn{
+	display: inline-block;
+    margin: 0px;
+    border: none;
+    background-color: #35C5F0;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.875rem;
+    line-height: 1.125rem;
+    width: auto;
+    height: 2.75rem;
+    border-radius: 0.25rem;
+    padding: 0 1rem;
+    font-weight: 400;
+    box-sizing: border-box;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+.cart-btn:hover, .buy-btn:hover{ background-color: #00B8F0;}

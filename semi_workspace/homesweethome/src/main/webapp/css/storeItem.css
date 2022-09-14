@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+
+
+
+
+.store-today-deal-list-content{display:flex; flex-direction: row; justify-content: center; }
+.store-index-today-deal-list-header{ display:flex; flex-direction: row;  justify-content: space-between;  align-items: center; margin: 0 auto}
+.store-index-today-deal-list-title{ color: #000; font-weight: bold; font-size: 2rem;}
+.store-index-today-deal-list-detail-link{margin-right: 0.5rem; color: #f77; font-weight: bold;  font-size: 1.3rem; transition: opacity .1s;}
+.today-deal-item-image{padding: 0;}
+.today-deal-item-image-item{padding: 0;}
+.production-item-image{padding: 0; overflow:hidden;}
+.product-image{width: 269px; height: 269px; border-radius: 5px; padding: 0; }
+ .product-image:hover{ transform: scale(1.1);}
+.today-deal-item-content{padding: 0.5rem 0 0 0;}
+.today-deal-item-content-wrap{padding: 0;}
+.today-deal-item-header-brand{display: block; font-size: 11px; color: #828c94;}
+.today-deal-item-header-name{margin-top: 5px; font-size: 18px; font-weight: 400; line-height: 17px; max-height: 34px;}
+.production-item-price-rate{color: #35c5f0; margin-right: 2px; font-weight: bold; font-size: 18px;}
+.production-item-price-price{color: #000; font-weight: bold; font-size: 18px;}

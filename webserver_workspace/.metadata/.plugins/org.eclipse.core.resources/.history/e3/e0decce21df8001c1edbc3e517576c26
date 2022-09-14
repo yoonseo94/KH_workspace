@@ -1,0 +1,7 @@
+#########################
+# urlCommand.properties #
+#########################
+/student/studentEnroll.do = com.kh.student.controller.StudentEnrollController
+/student/selectList.do = com.kh.student.controller.StudentSelectListController
+/student/selectOne.do = com.kh.student.controller.StudentSelectOneController
+

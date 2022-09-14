@@ -1,0 +1,94 @@
+package com.kh.employee.model.dao;
+
+import static common.JdbcTemplate.close;
+import static common.JdbcTemplate.getConnection;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.kh.employee.model.vo.Department;
+import com.kh.employee.model.vo.Employee;
+import com.kh.employee.model.vo.Job;
+import com.kh.employee.model.vo.Location;
+
+
+public class EmployeeDao {
+/*
+	select 
+	    e.emp_id, e.emp_name, j.job_name, d.dept_title, l.local_name, e.salary
+	from
+	    employee e
+	        join job j
+	            using(job_code)
+	        left join department d
+	            on e.dept_code = d.dept_id
+	        left join location l
+	            on d.location_id = l.local_code
+	where
+	    j.job_name = '대리';
+*/
+
+	public List<Employee> findByJobName(String jobName) {
+		String sql = 
+				"select \n"+
+				"    e.emp_id, e.emp_name, j.job_name, d.dept_title, l.local_name, e.salary\n"+
+				"from\n"+
+				"    employee e\n"+
+				"        join job j\n"+
+				"            using(job_code)\n"+
+				"        left join department d\n"+
+				"            on e.dept_code = d.dept_id\n"+
+				"        left join location l\n"+
+				"            on d.location_id = l.local_code\n"+
+				"where\n"+
+				"    j.job_name = ?";
+		
+		System.out.println(sql);
+		
+		List<Employee> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Connection conn = getConnection();
+		
+		try {
+			
+			// 1. PreparedStatement 객체 생성(미완성sql전달 & 값대입)
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, jobName);
+			// 2. 실행
+			rset = pstmt.executeQuery();
+			// 3. ResultSet처리 -> Member객체 변환
+			while (rset.next()) {
+				Employee employee = new Employee();
+				employee.setEmpId(rset.getString("emp_id"));
+				employee.setEmpName(rset.getString("emp_name"));
+				employee.setSalary(rset.getInt("salary"));
+				
+				Job job = new Job();
+				job.setJobName(rset.getString("job_name"));
+				employee.setJob(job);
+				
+				Location location = new Location();
+				location.setLocalName(rset.getString("local_name"));
+				Department department = new Department();
+				department.setDeptTitle(rset.getString("dept_title"));
+				department.setLocation(location);
+				employee.setDept(department);
+				
+				list.add(employee);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// 4. 자원반납(pstmt, rset)
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+
+}

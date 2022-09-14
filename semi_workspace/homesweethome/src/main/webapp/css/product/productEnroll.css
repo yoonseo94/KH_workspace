@@ -1,0 +1,42 @@
+@charset "UTF-8";
+#product-enroll-container{width: 75%; margin: 0 auto; font-family: 'Noto Sans KR', sans-serif;}
+#title-wrapper{width: 14%; margin: 0 auto;}
+#cont-title{ font-size: 3rem;}
+
+#searchTypeMain, #searchTypeSub{height: 2.55rem; width: 11.4rem; border: 1px solid #34C5F0; border-radius: 0.3rem; font-weight: bold; font-size:1rem; }
+#searchTypeMain:focus, #searchTypeSub:focus, .tbl-input:focus{  outline: none; border: 2px solid #34C5F0;}
+
+#enroll-submit-btn{
+	width: 6rem;
+	height: 3rem;
+	font-size: 1.2rem;
+	color: #fff;
+	border: none;
+	border-radius: 0.3rem;
+	background-color:  #34C5F0;
+	cursor:pointer;
+	padding: 0 0.5rem;
+}
+
+.input-file-btn input{
+	width: 5rem;
+	height: 2rem;
+	font-size: 1rem;
+	color: #fff;
+	border: none;
+	border-radius: 0.3rem;
+	background-color:  #34C5F0;
+	cursor:pointer
+} 
+
+#text{border: 1px solid #34C5F0; border-radius: 5px; font-family: 'Noto Sans KR', sans-serif; font-size: 1.2rem;}
+#enroll-submit-btn, .btn-product-delete:hover, .btn-finder:hover{
+	font-weight: bold;
+}
+.hr1{
+	border: 1px solid  #34C5F0;
+}
+#tbl-product-enroll{width: 40%; margin: 0 auto;}
+.tbl-input{height: 2.2rem; width: 11rem; border: 1px solid #34C5F0; border-radius: 0.3rem; font-weight: bold; text-align: center;}
+#tbl-product-enroll th, #tbl-product-enroll td{height: 3rem; padding: 0.15rem; text-align:center;}
+#tbl-product-enroll th{font-size: 1.2rem;}

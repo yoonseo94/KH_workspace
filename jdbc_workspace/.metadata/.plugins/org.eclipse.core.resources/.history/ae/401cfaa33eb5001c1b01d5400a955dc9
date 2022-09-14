@@ -1,0 +1,10 @@
+package com.chun.student.model.vo;
+
+public class Class {
+	private String classNo;
+	private Department departmentNo;
+	private Class preattendingClass;
+	private String className;
+	private ClassType classType;
+	
+}

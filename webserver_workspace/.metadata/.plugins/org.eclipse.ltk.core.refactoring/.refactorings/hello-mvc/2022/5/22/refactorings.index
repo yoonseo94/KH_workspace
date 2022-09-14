@@ -1,0 +1,10 @@
+1653275515587	Rename package 'board.model.vo'
+1653276251782	Rename resource 'boardList.배포.jsp'
+1653368525445	Extract method 'getAttachment'
+1653441216737	Extract method 'handleBoardResultSet'
+1653442089935	Rename resource 'boardView.배포.jsp'
+1653526220313	Extract method 'fileDownload'
+1653527838439	Rename resource 'boardUpdate.배포.jsp'
+1653534212197	Delete element
+1653535210476	Extract method 'getAttachment'
+1653535307111	Rename local variable 'attachmetns'

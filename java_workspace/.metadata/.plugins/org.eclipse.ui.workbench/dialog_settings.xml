@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="NewWizardAction">
+		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="org.eclipse.jdt.ui.wizards.NewClassCreationWizard"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.eclipse.jdt.ui.java"/>
+			<item value="org.eclipse.jst.j2ee.internal"/>
+			<item value="org.eclipse.jpt.jaxb"/>
+			<item value="org.eclipse.jst.ws.ui.new"/>
+		</list>
+	</section>
+	<section name="ImportExportAction">
+		<item key="ImportExportPage.STORE_SELECTED_EXPORT_WIZARD_ID" value="org.eclipse.ui.wizards.export.ZipFile"/>
+		<item key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID" value="org.eclipse.ui.wizards.import.ExternalProject"/>
+		<list key="ImportExportPage.STORE_EXPANDED_EXPORT_CATEGORIES">
+			<item value="org.eclipse.ui.Basic"/>
+			<item value="org.eclipse.jst.ejb.ui"/>
+			<item value="org.eclipse.equinox.p2.category"/>
+			<item value="org.eclipse.jdt.ui.Java"/>
+			<item value="org.eclipse.jst.j2ee.internal"/>
+			<item value="org.eclipse.pde.ui.PluginDevelopment"/>
+			<item value="org.eclipse.debug.ui"/>
+			<item value="org.eclipse.mylyn.tasks.ui.wizards.export.category"/>
+			<item value="org.eclipse.team.ui.exportWizards"/>
+			<item value="org.eclipse.wst.web.ui"/>
+			<item value="org.eclipse.jst.ws.creation.ui.wsexport.category"/>
+			<item value="org.eclipse.wst.XMLCategory"/>
+		</list>
+		<list key="ImportExportPage.STORE_EXPANDED_IMPORT_CATEGORIES">
+			<item value="org.eclipse.ui.Basic"/>
+		</list>
+	</section>
+	<section name="ZipFileExportWizard">
+		<item key="WizardZipFileResourceExportPage1.STORE_CREATE_STRUCTURE_ID" value="true"/>
+		<item key="WizardZipFileResourceExportPage1.STORE_COMPRESS_CONTENTS_ID" value="true"/>
+		<list key="WizardZipFileResourceExportPage1.STORE_DESTINATION_NAMES_ID">
+			<item value="C:\Users\user1\Desktop\mail-test.zip"/>
+			<item value="C:\Users\user1\Desktop\15_Thread_Network.zip"/>
+			<item value="C:\Users\user1\Desktop\14_Collections_Generics.zip"/>
+			<item value="C:\Users\user1\Desktop\13_IO.zip"/>
+			<item value="C:\Users\user1\Desktop\13_IO_14_Collections_Generics.zip"/>
+			<item value="C:\Users\user1\Desktop\12_Exception.zip"/>
+			<item value="C:\Users\user1\Desktop\11_jdk_api.zip"/>
+			<item value="C:\Users\user1\Desktop\07_OOP.zip"/>
+			<item value="C:\Users\user1\Desktop\06_NestedLoop_2DimentionalArray.zip"/>
+			<item value="C:\Users\user1\Desktop\05_Array.zip"/>
+			<item value="C:\Users\user1\Desktop\04_Statement.zip"/>
+			<item value="C:\Users\user1\Desktop\03_Operator.zip"/>
+			<item value="C:\Users\user1\Desktop\02_Variable_03_Operator.zip"/>
+			<item value="C:\Users\user1\Desktop\02_Variable.zip"/>
+			<item value="C:\Users\user1\Desktop\01_HelloWorld_02_Variable.zip"/>
+			<item value="C:\Users\user1\Desktop\01_HelloWorld.zip"/>
+		</list>
+	</section>
+	<section name="PreferencesImportWizard">
+		<item key="" value="D:\Dropbox\Coding\eclipse\eclipse-key-config.epf"/>
+		<list key="WizardPreferencesExportPage1.STORE_DESTINATION_NAMES_ID">
+			<item value="D:\Dropbox\Coding\eclipse\eclipse-key-config.epf"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.preferences.keysPreferencePage">
+	</section>
+	<section name="ZipFileImportWizard">
+	</section>
+</section>

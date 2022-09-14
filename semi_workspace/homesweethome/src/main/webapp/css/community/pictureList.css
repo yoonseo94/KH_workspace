@@ -1,0 +1,148 @@
+@charset "UTF-8";
+body{font-family: 'Noto Sans KR', sans-serif;}
+#board_top{margin-top:6rem; margin-left:17.5rem;}
+.write-btn{margin-left:78rem;}
+.btn-write{background-color: #00B8F0; border:none;height:40px;width: 134.65px;border:0;outline: none; 
+text-align :center;font-size: 1.1rem; color:white;font-weight: bold;border-radius: 8%; margin-bottom: 1.8rem;}
+.btn-write:hover{cursor:pointer;}
+ .thumbnail{width:225px; display: block; float:left; margin-left:1rem; margin-right: 3rem; border-radius: 8%;}
+.thumb_nail{border-radius: 8%;  width:260px; height:242px;}
+.thumbnail:hover{transform: scale(1.03);-webkit-transform: scale(1.03);
+-moz-transform: scale(1.03);-ms-transform: scale(1.03); -o-transform: scale(1.03);/*   overflow:hidden; */
+ }
+ a{text-decoration: none; color:#191818; font-size:1.12rem;}
+ .category{ margin-left:17.2rem; margin-bottom: 50rem; margin-right:2rem;}
+.selectType{margin-right:1rem; background-color: #F5F5F5; color:#757575; font-weight: bold;
+height: 3.4rem; width: 7.7rem; border: 1px solid#F0F0F0; font-size:16px; text-align:center;
+line-height: 1.2rem; border-radius: 4%;
+}
+.love-btn{border: 0; outline:0; background-color: white;}
+h2{margin-bottom: 1.9rem;}
+p{font-size:17px;}
+
+
+/*****작성하기******/
+body{font-family: 'Noto Sans KR', sans-serif;}
+#pic-enr-container{margin-left:36rem; margin-top: 5.2rem;}
+#categorySpace{margin-right: 1rem; margin-left:1.2rem;border: 1px solid #D5D5D5;outline:none;  margin-bottom:1rem;
+width:4.4rem; height:1.9rem;}
+#categoryShape{margin-left:1.2rem;border: 1px solid #D5D5D5;outline:none;  margin-bottom:1rem; width:7.4rem; height:2rem;}
+#categorySpace:hover,#categoryShape:hover{border: 1.4px solid #36C4F2; outline:none;}
+.pic-enr-btn:hover{cursor:pointer;}
+.pic-enr-title:hover,.pic-enr-nick:hover,.pic-enr-thumb:hover,.pic-enr-content:hover{
+	border: 1.5px solid #36C4F2; outline:none;
+}
+.pic-enr-title:focus,.pic-enr-nick:focus,.pic-enr-thumb:focus,.pic-enr-content:focus{
+	border: 1.5px solid #35C5F0; outline:none;
+}
+.pic-enr-title{border: 1px solid #D5D5D5; margin-bottom: 1rem; height:2rem; width:15.2rem;margin-left: 0.2rem;}
+.pic-enr-nick{border: 1px solid #D5D5D5; margin-bottom: 1rem; height:1.5rem;}
+.pic-enr-thumb{border: 1px solid #D5D5D5; margin-bottom: 1rem; height:1.5rem; margin-left:0.3rem; margin-top: 1rem;}
+.pic-enr-content{border: 1px solid #D5D5D5; margin-bottom: 1.3rem; margin-top: 1.2rem;}
+.pic-enr-btn{border: 1px solid #35c5f0;border-radius: 0.25rem;cursor: pointer;color: #35c5f0;font-size: 1rem;
+font-weight:bold; background: white;width: 5.8rem; height: 2.7rem;}
+
+
+/*****수정하기******/
+#board-up-container{margin-left:36rem; margin-top: 5.2rem;}
+.pic-up-btn:hover,.pic-can-btn:hover{cursor:pointer;}
+.pic-up-title:focus,.pic-up-nic:focus,.pic-up-content:focus{border: 1px solid #35C5F0; outline:none;}
+.pic-up-title:hover,.pic-up-nick:hover,.pic-up-content:hover{border: 1px solid #36C4F2; outline:none;}
+.pic-up-title{border: 1px solid #D5D5D5; margin-bottom: 1rem; height:2rem; width:15.2rem;}
+.pic-up-nic{border: 1px solid #D5D5D5; margin-bottom: 1rem; height:1.5rem;}
+.pic-up-content{border: 1px solid #D5D5D5; margin-bottom: 1rem; margin-top: 1.2rem;}
+.kh-update{border: 1px solid #35c5f0;border-radius: 0.25rem; color: #35c5f0; font-size: 1rem;
+font-weight:bold; background: white;width: 6.1rem; height: 2.2rem; margin-right:0.52rem;}  
+.kh-cancle{border: 1px solid #35c5f0;border-radius: 0.25rem; color: #35c5f0; font-size: 1rem;
+font-weight:bold; background: white;width: 3.1rem; height: 2.2rem; margin-right:0.52rem;}   
+
+.pic-up-btn{border: 1px solid #35c5f0;border-radius: 0.25rem;cursor: pointer;color: #35c5f0;font-size: 1rem;
+font-weight:bold; background: white;width: 5.8rem; height: 2.7rem;} 
+.pic-can-btn{border: 1px solid #35c5f0;border-radius: 0.25rem; color: #35c5f0; font-size: 1rem;
+font-weight:bold; background: white;width: 3.1rem; height: 2.2rem; margin-right:0.52rem;
+}
+
+/*******글 view*******/
+
+#board-view-container{margin-left:36rem; margin-top: 5.2rem;}
+
+
+
+.btn-upd:hover,.btn-del:hover{cursor:pointer;}
+.btn-upd{margin-top:2.1rem;border: 1px solid #35c5f0;border-radius: 0.25rem;cursor: pointer;color: #35c5f0;font-size: 1rem;
+font-weight:bold; background: white;width: 5.1rem; height: 2.7rem; margin-right:0.52rem; margin-left:1rem;}
+.btn-del{border: 1px solid #35c5f0;border-radius: 0.25rem;cursor: pointer;color: #35c5f0;font-size: 1rem;
+font-weight:bold; background: white;width: 5.1rem; height: 2.7rem; margin-right:0.52rem;}
+
+
+ .filebox .upload-name {
+    display: inline-block;
+    height: 40px;
+    padding: 0 10px;
+    vertical-align: middle;
+    border: 1px solid #dddddd;
+    width: 78%;
+    color: #999999;
+}
+.filebox label {
+    display: inline-block;
+    padding: 0.41rem 0.82rem;
+    color: #fff;
+    vertical-align: middle;
+    background-color: #35c5f0;
+    opacity:0.87;
+    cursor: pointer;
+    height: 1.4rem;
+    margin-left: 1px;
+    margin-top:0.3rem;
+}
+  .filebox input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
+  .swiper {
+        width: 100%;
+        height: 100%;
+      }
+
+      .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+      }
+
+      .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .swiper {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      
+      
+.btn-go{color:#757575; font-weight:bold; font-size:18.5px; background-color: #F5F5F5; border:none; 
+border-radius:8%; margin-left:10px; padding:10px;}
+.btn-go:hover{background-color:#E7F4FC;  color:#35C2F0; font-weight:bold; font-size:18.5px; cursor: pointer}
+  

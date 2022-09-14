@@ -1,0 +1,13 @@
+package com.kh.student.controller;
+
+import com.kh.common.AbstractController;
+
+/**
+ *  
+ *  GET /mybatis/student/studentEnroll.do -> StudentEntrollController
+ *  POST /mybatis/student/studentEnroll.do -> StudentEntrollController
+ *
+ */
+public class StudentEnrollController extends AbstractController {
+	
+}

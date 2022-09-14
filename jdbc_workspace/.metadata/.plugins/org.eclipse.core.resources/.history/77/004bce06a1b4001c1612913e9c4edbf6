@@ -1,0 +1,12 @@
+package com.chun.student.model.vo;
+
+public class Department {
+
+	private String departmentNo;
+	private String departmentName;
+	private Category category; // enum 타입처리
+	private boolean openYn; // 'Y' - true, 'N' - false
+	private int capacity;
+}
+
+

@@ -1,0 +1,220 @@
+@charset "UTF-8";
+body{font-family: 'Noto Sans KR', sans-serif;}
+/**이벤트 목록**/
+#event{
+margin-top:4.2rem;}
+.event-list{margin-left:31.7rem;margin-top: 5.2rem;} 
+
+.going{color:#35C5F0; font-weight: bold; font-size:19px;}
+.end{color: gray; font-weight: bold; font-size:19px;}
+
+#listimg{width:57%;height:23%;transform:scale(1.0);}
+#listimg:hover{transform: scale(1.07);
+-webkit-transform: scale(1.07);
+-moz-transform: scale(1.07);
+-ms-transform: scale(1.07);
+-o-transform: scale(1.07);}
+  
+.btn-event-add{float:right; margin: 1.7rem 0 0 1.5rem;background-color:#35C5F0;height:3.4rem;
+width: 8rem;border:0;outline: none; text-align :center;font-size: 17px;
+color:white;font-weight: bold;border-radius: 0.5rem; margin-right:8rem;}
+.btn-event-add:hover{background-color: #00B8F0;cursor:pointer;}
+  
+  
+/**이벤트 view**/
+#event-view-container{margin-bottom: 5rem; margin-left:32rem;}
+#event-view-container>h2{margin-left:14.5rem;}
+.contest-participate{margin-left : 8.2rem;}
+.contest-participatego{margin-left : 8.2rem;}
+.btn-partgo{background-color:#35C5F0;height:4.7rem;width: 25.2rem;border:0;
+outline: none; text-align :center;font-size: 21px;color:white;font-weight: bold;border-radius: 0.4rem;}
+.btn-part{background-color:#AB77FF;height:4.7rem;width: 25.2rem;border:0;outline: none; text-align :center;
+font-size: 21px;color:white;font-weight: bold;border-radius: 0.4rem;}
+.btn-partgo:hover,.btn-part:hover{cursor:pointer;}
+#btn-updel{float:right; margin-right: 19.5rem; margin-top: 1.7rem; margin-bottom:13rem;}
+#btn-updel:hover{cursor:pointer;}
+.btn-upd{border: 1px solid #35c5f0;border-radius: 0.25rem;cursor: pointer;color: #35c5f0;font-size: 1rem;
+font-weight:bold; background: white;width: 5.8rem; height: 2.7rem; margin-right:0.52rem;}
+.btn-del{border: 1px solid #35c5f0;border-radius: 0.25rem;cursor: pointer;color: #35c5f0;font-size: 1rem;
+font-weight:bold; background: white;width: 5.8rem; height: 2.7rem;} 
+.btn-list{border: 1px solid #35c5f0;border-radius: 0.25rem;cursor: pointer;color: #35c5f0;font-size: 1rem;
+font-weight:bold; background: white;width: 5.8rem; height: 2.7rem; margin-left:0.4rem;}
+
+ 
+/**이벤트 update**/
+ #event-update-container{margin-left:36.2rem;}
+ #tbl-board-view{margin-top:2.5rem;}
+.title_part{height: 3rem;width: 17rem;padding: 0.6rem 0.9rem 0.7rem;
+font-size: 1rem;font-weight:bold;border: 1px solid #D5D5D5;border-radius: 0.25rem;box-sizing: border-box;
+color:black; margin-left: 1rem; margin-bottom: 1rem;}
+th{font-size:17px;}
+.file_c{margin-bottom: 1rem; margin-left: 1rem; }
+.content{margin-bottom: 1rem; margin-left: 1rem;border: 1px solid #D5D5D5;}
+.title_part:focus, #file-btn:focus,.file_c:focus,.content:focus{border: 1px solid #36C4F2; outline:none;}
+.btn-updupd:hover, .btn-cancel:hover{cursor: pointer;}
+.btn-updupd{border: 1px solid #35c5f0;border-radius: 0.25rem;cursor: pointer;color: #35c5f0;font-size: 1rem;
+font-weight:bold; background: white;width: 5.1rem; height: 2.7rem; margin-right:0.52rem;}
+.btn-cancel{border: 1px solid #35c5f0;border-radius: 0.25rem;cursor: pointer;color: #35c5f0;font-size: 1rem;
+font-weight:bold; background: white;width: 4.8rem; height: 2.7rem;} 
+
+
+/**이벤트 create**/
+#event-enroll-container{margin-left:27rem; margin-top: 5.2rem;}
+ .eventid:focus .event-en-title:focus,.event-en-content:focus, .thumb:focus,.sdate:focus,.edate:focus{border: 1px solid #35C5F0; outline:none;}
+ .eventid:hover, .event-en-title:hover,.event-en-content:hover, .thumb:hover,.sdate:hover,.edate:hover{border: 1px solid #36C4F2; outline:none;}
+ .eventid{height: 1.8rem;width: 7.2rem; border: 1px solid #D5D5D5; margin-bottom: 0.2rem;}
+ .event-en-title{height: 3rem;width: 17rem;
+font-size: 1rem;font-weight:bold;border: 1px solid #D5D5D5;border-radius: 0.25rem;box-sizing: border-box;
+color:black;  margin-bottom: 1rem;}
+.event-en-content{border: 1px solid #D5D5D5; margin-top:1rem; margin-bottom: 1rem;}
+.thumb{border: 1px solid #D5D5D5; margin-top:1rem; margin-bottom: 1rem; margin-left:0.4rem; height:1.9rem;}
+ .sdate,.edate{border: 1px solid #D5D5D5; margin-top:1rem; margin-bottom: 1rem; height:2rem;}
+ .event-en-roll:hover{cursor:pointer;}
+ .event-en-roll{border: 1px solid #35c5f0;border-radius: 0.25rem;cursor: pointer;color: #35c5f0;font-size: 1rem;
+font-weight:bold; background: white;width: 5.3rem; height: 2.7rem; margin-top: 1rem;}
+
+
+
+
+/**이벤트 참가작 update **/
+#update-eventApply{margin-left:37rem; margin-top: 5.2rem;}
+.eau-btn-modi:hover,.eau-btn-no:hover{cursor:pointer;}
+#eventNo:focus,.title:focus,.nickname:focus,.content:focus{border: 1px solid #35C5F0; outline:none;}
+#eventNo:hover,.title:hover,.nickname:hover,.content:hover{border: 1px solid #36C4F2; outline:none;}
+ .eventNo{margin-right: 1rem;}
+ #eventNo{border: 1px solid #D5D5D5; margin-top:1rem; margin-bottom: 3rem;}
+.eau-title{border: 1px solid #D5D5D5; margin-bottom: 1rem; height:2rem; width:15.2rem;margin-left: 0.2rem;}
+.eau-nickname{border: 1px solid #D5D5D5; margin-bottom: 1rem; height:1.5rem;}
+.eau-content{border: 1px solid #D5D5D5; margin-bottom: 1rem; margin-top: 1.2rem;}
+.eau-btn-modi{border: 1px solid #35c5f0;border-radius: 0.25rem; color: #35c5f0; font-size: 1rem;
+font-weight:bold; background: white;width: 6.1rem; height: 2.2rem; margin-right:0.52rem;}  
+.eau-btn-no{border: 1px solid #35c5f0;border-radius: 0.25rem; color: #35c5f0; font-size: 1rem;
+font-weight:bold; background: white;width: 3.1rem; height: 2.2rem; margin-right:0.52rem;}    
+
+
+/**이벤트 참가작 create**/
+ #eventNo:focus,.eventapplycode:focus,.eae-nickname:focus,.eae-content:focus{border: 1px solid #35C5F0; outline:none;}
+ .enrollevent:hover{cursor:pointer;}
+ #eventNo:hover,.eventapplycode:hover,.eae-nickname:hover,.eae-content:hover{border: 1px solid #36C4F2; outline:none;}
+ #eae-board-container{margin-left:34rem; margin-top: 5.2rem;}
+ .eventNo{margin-right: 1rem;}
+ #eventNo{border: 1px solid #D5D5D5; margin-top:1rem; margin-bottom: 3rem;}
+ .eventapplycode{border: 1px solid #D5D5D5; margin-bottom: 1rem; height:2rem; width:15.2rem;}
+ .eae-nickname{border: 1px solid #D5D5D5; margin-bottom: 1rem; height:1.5rem; }
+ .eae-content{border: 1px solid #D5D5D5; margin-bottom: 1rem; margin-top: 1.2rem;}
+.eae-enrollevent{border: 1px solid #35c5f0;border-radius: 0.25rem;cursor: pointer;color: #35c5f0;font-size: 1rem;
+font-weight:bold; background: white;width: 5.8rem; height: 2.7rem;}
+
+/**이벤트 참가작 view**/
+
+#event-app-enroll-container{margin-left:36.5rem; margin-top: 3rem;}
+.btn-back:hover,.btn-modi:hover,.btn-del:hover{cursor:pointer;}
+.btn-back{background-color:#35C5F0;height:2.9rem;
+width: 6rem;border:0;outline: none; text-align :center;font-size: 1rem;
+color:white;font-weight: bold;border-radius: 0.25rem; margin-bottom:0.6rem;}
+.btn-modi{border: 1px solid #35c5f0;border-radius: 0.25rem;cursor: pointer;color: #35c5f0;font-size: 1rem;
+font-weight:bold; background: white;width: 5.8rem; height: 2.7rem; margin-right:0.2rem;}
+
+
+
+
+/**이벤트 참가작 list **/
+
+.img_logo{margin-left:26rem;}
+.title-view>h2{margin-left:43rem; margin-bottom:2rem;}
+a{text-decoration: none;  color: black; font-weight:bold;}
+.main{margin-top:4rem; margin-left:42rem; margin-bottom: 5rem;}
+.btn-go-main:hover,.btn-go-apply:hover{cursor:pointer;}
+.btn-go-main{border: 1px solid #35c5f0;border-radius: 0.25rem;cursor: pointer;color: #35c5f0;font-size: 1rem;
+font-weight:bold; background: white;width: 5.8rem; height: 2.7rem; float:right; margin-left:0.4rem; margin-right:18.2rem;}
+.btn-go-apply{border: 1px solid #35c5f0;border-radius: 0.25rem;cursor: pointer;color: #35c5f0;font-size: 1rem;
+font-weight:bold; background: white;width: 5.8rem; height: 2.7rem;float:right;margin-bottom:12rem;}
+
+ #file-btn:focus, #file-box:focus{border: 1px solid #35C5F0; outline:none;}
+ #file-btn:hover, #file-box:hover {background-color: #f7f9fa; }
+#file-box{
+	width: 31rem;
+    height: 44px;
+    padding: 0.6rem 0.9rem 0.7rem;
+    font-size: 1rem;
+    border: 1px solid #eaebef;
+    border-radius: 0.25rem;
+    box-sizing: border-box;
+    flex: 1;
+    display: inline-block;
+    align-items: center;
+    min-width: 0;
+    padding: 0 1rem;
+    margin-left: -0.5rem;
+    vertical-align: middle;
+	}
+#file-box:before{
+	content: "";
+  	display: inline-block;
+    vertical-align:middle;
+    text-align:center;
+	height: 100%;  	
+}	
+#file-btn{
+	flex-shrink: 0;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 7.5rem;
+    height: 3rem;
+    margin-left: 0.6rem;
+    color: #35c5f0;
+    font-size: 1rem;
+    font-weight:bold;
+    vertical-align: middle;
+    border: 1px solid #35c5f0;
+    border-radius: 0.25rem;
+    box-sizing: border-box;
+    cursor: pointer;
+    margin-left: 1rem;
+}
+
+
+  .file{color:#35c5f0;}
+  .input-file-button{
+  padding: 6px 25px;
+  background-color:#FF6600;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+}
+  
+  
+  .filebox .upload-name {
+    display: inline-block;
+    height: 40px;
+    padding: 0 10px;
+    vertical-align: middle;
+    border: 1px solid #dddddd;
+    width: 78%;
+    color: #999999;
+}
+.filebox label {
+    display: inline-block;
+    padding: 0.41rem 0.82rem;
+    color: #fff;
+    vertical-align: middle;
+    background-color: #35c5f0;
+    opacity:0.87;
+    cursor: pointer;
+    height: 1.4rem;
+    margin-left: 1px;
+    margin-top:0.3rem;
+}
+  .filebox input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
+  
+  
+  
+  

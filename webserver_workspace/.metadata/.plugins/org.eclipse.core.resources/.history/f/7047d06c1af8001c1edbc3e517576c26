@@ -1,0 +1,26 @@
+package com.kh.student.model.service;
+
+import static com.kh.common.SqlSessionTemplate.getSqlSession;
+import org.apache.ibatis.session.SqlSession;
+
+import com.kh.student.model.dao.StudentDao;
+import com.kh.student.model.dto.Student;
+
+public class StudentServiceImpl implements StudentService {
+	private StudentDao studentDao;
+
+	public StudentServiceImpl(StudentDao studentDao) {
+		super();
+		this.studentDao = studentDao;
+	}
+
+	@Override
+	public Student selectOne(int no) {
+		SqlSession sqlSession = getSqlSession();
+		
+		return null;
+	}
+	
+	
+	
+}

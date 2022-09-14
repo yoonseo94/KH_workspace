@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>traversing</title>
+  <script src="js/jquery-3.6.0.js"></script>
+  <style>
+  .wrap * {
+    border: 1px solid lightgray;
+    display: block;
+    padding: 5px;
+    margin: 15px;
+    color: gray;
+  }
+  .type {
+    width: 500px;
+  }
+  </style>
+</head>
+<body>
+  <h1>traversing</h1>
+  <div class="wrap">
+    <div class="type">div.type (great-grandparent)
+        <ul>ul (grandparent)
+            <li>li (direct parent)
+                <span>span1</span>
+            </li>
+            <li>li (direct parent)
+                <span>span2</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="type">div.type (grandparent)
+        <p>p (direct parent)
+            <span>span3</span>
+        </p>
+    </div>
+
+    <!-- @실습문제 -->
+		<div class="type test">
+			div.test
+			<ul>
+				ul1
+				<li>li1-1</li>
+				<li>
+					li1-2
+					<ul>
+						ul2
+						<li>li2-1</li>
+						<li>li2-2</li>
+						<li>
+							li2-3
+							<ul>
+								ul3
+								<li>
+									li3
+									<span id="fromMe">fromMe</span>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+
+
+  </div>
+  <button id="btn1">부모</button>
+  <button id="btn2">자식</button>
+  <script>
+  const style = {
+    "color" : "red",
+    "border" : "2px solid red"
+  };
+
+  /**
+   * 부모
+   * - parent([selector]) 직계부모요소 하나
+   * - parents([selector]) 모든 조상요소
+   * - parentsUntil(selector) 특정부모요소 전까지 모든 조상요소
+   */
+  $(btn1).click(() => {
+    console.log(
+      $("span")
+        // .parent() 
+        // .parent("p") // 직계부모요소중 p태그만 선택
+        // .parents()
+        // .parents("div")
+        .parentsUntil("div.type")
+        .css(style)
+    );
+  });
+
+  /**
+   * 자식
+   * - children([selector]) 모든 직계자식요소
+   * - find(selector) 매칭되는 모든 후손요소
+   */
+  $(btn2).click(() => {
+    console.log(
+      $(".wrap")
+        // .children()
+        // .children(":has(li)")
+        .find("span")
+        .css(style)
+    );
+  });
+  </script>
+
+	<div class="wrap">
+		<p>p</p>
+		<span>span</span>
+		<h1>h1</h1>
+		<h2 id="start">h2</h2>
+		<h3>h3</h3>
+		<h4>h4</h4>
+		<p>p</p>
+	</div>
+  <button id="btn3">형제</button>
+  <br><br>
+  <button id="btn4">@실습문제</button>
+
+  <script>
+  /**
+   * 형제
+   * - siblings([selector]) 모든 형제요소
+   * 
+   * - next([selector]) 다음 형제요소 하나
+   * - nextAll([selector]) 다음 형제요소 모두
+   * - nextUntil(selector) 특정형제요소 전까지의 모든 형제요소
+   * 
+   * - prev([selector]) 이전 형제요소 하나
+   * - prevAll([selector]) 이전 형제요소 모두
+   * - prevUntil(selector) 특정형제요소 전까지의 모든 형제요소
+   * 
+   */
+  $(btn3).click(() => {
+    $(start)
+      // .siblings()
+      // .siblings(":header")
+      // .next()
+      // .nextAll()
+      // .nextAll(":header")
+      .nextUntil("h4")
+      .css(style);
+  });
+
+  /**
+   * @실습문제 - li2-2, li2-3
+   * - .wrap
+   * - #fromMe
+   */
+  $(btn4).click((e) => {
+    // console.log(
+    //   $(".wrap")
+    //     .find("ul")
+    //     .eq(2)
+    //     .children(":not(:first)")
+    //     .css(style)
+    // );
+
+    // console.log(
+    //   $(fromMe)
+    //     .parents("ul")
+    //     .eq(1)
+    //     .children(":not(:first)")
+    //     .css(style)
+    // );
+
+    console.log(
+      $(fromMe)
+        .parent()
+        .parent()
+        .parent()
+        .add(".type.test li:eq(3)")
+        .css(style)
+    );
+
+  });
+  </script>
+
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

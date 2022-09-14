@@ -1,0 +1,11 @@
+package com.kh.common;
+
+/**
+ * 
+ * new연산자 호출을 방지할 목적 abstract class생성 가능 
+ *
+ */
+public abstract class AbstractController {
+
+	
+}

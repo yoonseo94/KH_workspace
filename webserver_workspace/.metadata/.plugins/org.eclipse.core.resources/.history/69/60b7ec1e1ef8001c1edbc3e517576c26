@@ -1,0 +1,11 @@
+package com.kh.student.controller;
+
+import com.kh.common.AbstractController;
+import com.kh.student.model.service.StudentService;
+
+public class StudentController extends AbstractController {
+	private StudentService studentService;
+	
+	
+	
+}

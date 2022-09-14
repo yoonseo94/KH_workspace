@@ -1,0 +1,8 @@
+1652667794689	Rename resource 'memberEnroll.배포.jsp'
+1652680247536	Rename resource 'checkIdDuplicate.배포.jsp'
+1652766939348	Rename type 'LogFilter'
+1652766973944	Rename type 'ALogFilter'
+1652835800561	Rename resource 'passwordUpdate.배포.jsp'
+1652840631880	Extract method 'handleMemberResultSet'
+1652840910934	Rename resource 'memberList.배포.jsp'
+1652853493932	Delete element

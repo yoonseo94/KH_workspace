@@ -1,0 +1,17 @@
+package mybatis.test;
+
+import com.kh.student.model.service.StudentService;
+import com.kh.student.model.service.StudentServiceImpl;
+
+public class MybatisTest {
+
+	public static void main(String[] args) {
+		MybatisTest instance = new MybatisTest();
+		instance.test1();
+	}
+
+	private void test1() {
+		StudentService studentService = new StudentServiceImpl();
+	}
+
+}

@@ -1,0 +1,9 @@
+package kh.java.cast;
+
+public class CastingStudy {
+
+	public static void main(String[] args) {
+		
+	}
+	
+}

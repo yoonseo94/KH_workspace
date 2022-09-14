@@ -1,0 +1,10 @@
+package com.kh.employee.run;
+
+public class EmployeeMain {
+
+	public static void main(String[] args) {
+		EmployeeDao employeeDao = new EmployeeDao();
+		employeeDao.findByJobName("대리");
+	}
+
+}

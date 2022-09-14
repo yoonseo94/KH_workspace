@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>@실습문제.게임정보</title>
+  <style>
+  table {border: 1px solid #000; border-collapse: collapse; margin-top: 10px;}
+  th, td {border: 1px solid #000; text-align: center; min-width: 200px; padding: 5px;}
+  </style>
+</head>
+<body>
+  <h1>@실습문제.게임정보</h1>
+  <fieldset>
+    <legend>@실습문제 : 게임</legend>
+    <button onclick="start();">게임시작</button>
+    <button onclick="end();">게임종료</button>
+    <table id="info">
+      <tbody>
+        <tr>
+          <th>게임명</th>
+          <td id="gameTitle" class="info"></td>
+        </tr>
+        <tr>
+          <th>시작시각</th>
+          <td id="gameStart" class="info"></td>
+        </tr>
+        <tr>
+          <th>소요시간</th>
+          <td id="gameUptime" class="info"></td>
+        </tr>
+        <tr>
+          <th>종료시각</th>
+          <td id="gameEnd" class="info"></td>
+        </tr>
+      </tbody>
+    </table>
+  </fieldset>
+  <script>
+  /**
+   * @실습문제 : game
+   * - start함수 사용자로부터 게임명을 입력받고 게임시작.
+   *    - #gameStart 현재시각정보를 hh:mm:ss 형식으로 출력
+   *    - #gameUptime 게임소요시각을 hh:mm:ss형식으로 출력. setInterval사용해서 1초마다 출력(intervalId).
+   * - end함수 게임종료
+   *    - #gameEnd 현재 시각정보를 hh:mm:ss 형식으로 출력
+   *    - setInterval을 종료(intervalId)  
+   */
+  const start = () => {
+    // 0. 초기화
+    reset();
+    // 1.게임명 입력받기
+    const title = prompt("게임명을 입력하세요.", "LOL");
+    // 2.game객체 startUp 메소드 호출
+    game.startUp(title);
+  };
+  const end = () => {
+    // 1.game객체 shutDown 메소드 호출
+    game.shutDown();
+  };
+  const reset = () => {
+    document.querySelectorAll(".info").forEach((td) => td.innerHTML = "");
+    // 아직 중지되지 않은 interval함수를 종료
+    !intervalId && clearInterval(intervalId);
+  }
+  let intervalId; // interval종료를 위한 id값 변수
+
+  const game = {
+    title: undefined,
+    startUp(title){
+      this.title = title;
+      this.info.start = Date.now();
+      // 3. #info테이블에 게임정보기록
+      gameTitle.innerHTML = this.title;
+      gameStart.innerHTML = displayTime(new Date(this.info.start));
+      // 4. 소요시간 interval처리
+      // 전달된 콜백함수를 1초후에 실행후, 1초마다 실행!
+      intervalId = setInterval(() => {
+        gameUptime.innerHTML = displayUptime(Date.now() - this.info.start);
+      }, 1000);
+      console.log('발급된 intervalId : ', intervalId);
+    },
+    shutDown(){
+      // 1. 종료시각 기록
+      this.info.end = Date.now();
+      gameEnd.innerHTML = displayTime(new Date(this.info.end));
+      // 2. intervalId 정지
+      clearInterval(intervalId);
+    },
+    info : {
+      start : undefined, // 게임 시작 시각(millis)
+      end : undefined // 게임 종료 시각(millis)
+    }
+  };
+  const f = (n) => (n < 10) ? "0" + n : n;
+  /**
+   * 두 날짜데이터의 시간차이(millis)를 인자로 받아서 시:분:초 형식을 변환 함수
+   */ 
+  const displayUptime = (millis) => {
+    // console.log(millis);
+    const sec = Math.trunc(millis / 1000); // 밀리초 - 초 변환
+    const hh = f(Math.trunc(sec / (60 * 60))); // 버림(전체초 / (60초 * 60분)) -> 시간
+    const mm = f(Math.trunc(sec % (60 * 60) / 60)); // 버림((나머지초) / 60초) -> 분
+    const ss = f(sec % (60 * 60) % 60); // 버림(나머지초 % 60초) -> 초
+    return `${hh}:${mm}:${ss}`;
+  };
+  const displayTime = (date) => {
+    
+    const hh = f(date.getHours());
+    const mm = f(date.getMinutes());
+    const ss = f(date.getSeconds());
+    return `${hh}:${mm}:${ss}`;
+  }
+  </script>
+  
+</body>
+</html>

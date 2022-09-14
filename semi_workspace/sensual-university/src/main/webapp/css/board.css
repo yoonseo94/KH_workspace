@@ -1,0 +1,138 @@
+@charset "UTF-8";
+@charset "UTF-8";
+
+/* List */
+.board_menu{
+ 
+    list-style: none;
+}
+.board_menu li {
+	float: left;
+	font-size: 18px;
+    margin-bottom: 20px ;
+}
+section.list_section {
+	width: 75%;
+	height: 750px;
+}
+div.board_menu li a {
+	text-decoration: none;	
+	color: black;
+	float: left;
+}
+div.board_menu li a:hover {
+	font-weight: bold;
+}
+div#pageBar {
+	color: black;
+}
+th.line1 {
+	width: 100px;
+    height: 30px;
+    text-align: center;
+}
+thead.list_thead th, td{
+	white-space: nowrap;
+    vertical-align: top;
+    text-align: center;
+}
+td.td_content {
+	border-bottom: 1px solid #000;
+}
+/* 조회된 정보가 없습니다. */
+table#tbl_notice tr td {
+	text-align: center;
+}
+/* 글쓰기 버튼 */
+section.list_section input {
+	float: right;
+	margin-bottom: 6px;
+}
+/* Enroll */
+button#btn_enroll {
+	float: right;
+}
+section.section p {
+	font-size: 23px;
+	font-weight: bold;
+}
+table.tbl_view {
+	width: 100%;
+	table-layout: fixed;
+}
+table.tbl_view th {
+	padding: 10px 0; 
+	text-align: center; 
+}
+/* View */
+table.tbl_view td{
+	text-align: left;
+}
+div.view_btn {
+	text-align: right;
+	height: 2px;
+}
+h4.mt-4 {
+	font-weight:bold;
+}
+input#delete_btn {
+	margin-left: 0px;
+}
+section.notice_container_view > input {
+	float: right;
+	margin: -19px 0px;
+}
+a {
+	color: black;
+    text-decoration: none;
+}
+
+table.tbl_view td {
+	border: none;
+}
+/* Update */
+table.tbl_view {
+	text-align: center;
+	border: 1px solid #dddddd;
+}
+td#td_view_content {
+	min-height: 200px; 
+	text-align: left;
+}
+div#update_btn { 
+	float: right;
+}
+section#notice_container_enroll .container-fluid {
+	margin-top: -25px;
+	padding: 0px;
+}
+h4.mt-4 {
+	font-weight: bold;
+}
+/* comment */
+div.comment_container textarea {
+	width: 1060px;
+    height: 50px;
+    margin: 30px 7px;
+}
+table.tbl_comment {
+	width: 1138px;
+	margin: 3% 0.4%;
+    border-collapse: collapse;
+    border: none;
+}	
+button.btn_delete {
+	border: 1px solid gray;
+    border-radius: 11%;
+    font-size: 14px;
+    width: 47px;
+    height: 26px;
+    margin-top: 6px;
+}
+table.tbl_comment tr td{border-bottom:0.5px solid; border-top:0.5px solid; padding:5px; text-align:left; line-height:120%;}
+table.tbl_comment tr td:first-of-type{padding: 0px -1px 5px 50px;}
+table.tbl_comment tr td:last-of-type {text-align:right; width: 100px;}
+table.tbl_comment button.reply_go_chat{margin:6px 0px; width: 48px; height:25px; border: 1px solid gray; border-radius: 4px; font-size:12px}
+table.tbl_comment tr:hover {background:lightgray;}
+table.tbl_comment tr:hover button.btn-reply{display:inline;}
+sub.comment_writer {margin-right:10px; font-size:12px; font-weight:600;}

@@ -1,0 +1,13 @@
+package com.kh.emp.controller;
+
+import com.kh.common.AbstractController;
+import com.kh.emp.model.service.EmpService;
+
+public class EmpSearchController1 extends AbstractController {
+	private EmpService empService;
+	
+	public EmpSearchController1(EmpService empService) {
+		this.empService = empService;
+	}
+
+}

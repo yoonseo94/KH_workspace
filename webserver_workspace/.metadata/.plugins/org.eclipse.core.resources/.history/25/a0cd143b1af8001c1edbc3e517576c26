@@ -1,0 +1,16 @@
+package com.kh.student.model.service;
+
+import com.kh.student.model.dao.StudentDao;
+
+public class StudentServiceImpl implements StudentService {
+	
+	private StudentDao studentDao;
+
+	public StudentServiceImpl(StudentDao studentDao) {
+		super();
+		this.studentDao = studentDao;
+	}
+	
+	
+	
+}

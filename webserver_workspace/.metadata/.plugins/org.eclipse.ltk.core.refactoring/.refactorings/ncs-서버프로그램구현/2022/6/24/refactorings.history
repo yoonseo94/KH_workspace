@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;BoardInsertServlet.java&apos; to &apos;board.controller.BoardInsertServlet.java&apos;&#x0D;&#x0A;- Original project: &apos;ncs-서버프로그램구현&apos;&#x0D;&#x0A;- Destination element: &apos;board.controller.BoardInsertServlet.java&apos;&#x0D;&#x0A;- Original element: &apos;board.controller.BoardInsertServlet.java&apos;" description="Copy compilation unit" destination="/src\/main\/java&lt;board.controller{BoardInsertServlet.java" element1="/src\/main\/java&lt;board.controller{BoardInsertServlet.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1654831726754" units="1" version="1.0"/>
+</session>

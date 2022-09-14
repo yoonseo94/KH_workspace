@@ -1,0 +1,21 @@
+package com.sh.assertion;
+
+public class Test {
+
+	public static void main(String[] args) {
+		Test test = new Test();
+		test.foo("abc");
+		test.foo(null);
+	}
+
+	private void foo(String str) {
+		assert str != null : "str is null";
+		System.out.println(str);
+	}
+	
+	public void unReachableCode(){
+        System.out.println("Unreachable Code");
+        assert true;
+	}
+
+}

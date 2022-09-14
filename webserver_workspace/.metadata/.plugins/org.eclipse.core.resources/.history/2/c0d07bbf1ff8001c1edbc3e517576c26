@@ -1,0 +1,26 @@
+package com.kh.student.model.dto;
+
+import java.time.LocalDateTime;
+import java.util.Date;
+
+public class Student {
+	
+	private int no;
+	private String name;
+	private String tel;
+	private Date createdAt;
+	private LocalDateTime updatedAt;
+	private LocalDateTime deletedAt;
+	
+	public Student() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	
+	
+	
+	
+	
+	
+}

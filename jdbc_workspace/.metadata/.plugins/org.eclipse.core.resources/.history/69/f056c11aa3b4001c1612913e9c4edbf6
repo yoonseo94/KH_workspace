@@ -1,0 +1,8 @@
+package com.chun.student.database.model.vo;
+
+public class GradeOne {
+	private String termNo;
+	private StudentOne student;
+	private Class clazz;
+	private double point;
+}

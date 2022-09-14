@@ -1,0 +1,22 @@
+package com.kh.spring.data.course;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Student {
+
+	private int id;
+	private String name;
+	private String tel;
+	public Student(int id) {
+		super();
+		this.id = id;
+	}
+	
+	
+	
+}

@@ -1,0 +1,13 @@
+package com.kh.student.controller;
+
+import com.kh.common.AbstractController;
+import com.kh.student.model.service.StudentService;
+
+public class StudentTotalCountController extends AbstractController {
+	private StudentService studentService;
+	
+	public StudentTotalCountController(StudentService studentService) {
+		this.studentService = studentService;
+	}
+
+}

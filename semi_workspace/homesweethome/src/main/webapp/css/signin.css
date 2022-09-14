@@ -1,0 +1,203 @@
+
+/* ====================================== section ===================================== */
+hr {width: 68.8%;}
+
+.input-wrapper .input-container{
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 18.75rem;  
+    height: 1.75rem; 
+    background: #FFFFFF;
+
+    margin: 0.2rem auto;
+}
+.input-container{padding: 0;}
+
+.input-wrapper .input-container input::placeholder {
+    color: #CACACA;
+}
+ 
+
+#input-user-id, #input-password, #input-order-no, #input-email  {
+    width: 20rem;
+    height: 3rem;
+    font-size: 1.3rem;
+    background-color: #fff;
+    padding: 0.6rem;
+    border: 1px solid #CACACA;
+    border-radius: 0.25rem;
+   
+}
+
+#input-user-id:focus, #input-password:focus, #input-order-no:focus, #input-email:focus {
+border: 1px solid #35C5F0; outline:none;
+}
+#input-user-id:hover, #input-password:hover, #input-order-no:hover, #input-email:hover {
+background-color: #f7f9fa; 
+}
+
+section p, section a {
+    font-family: 'Jua', sans-serif;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: black;
+}
+
+.social-login p {
+	font-family: 'Jua', sans-serif;
+    font-size: 1.2rem;
+	margin: 0;
+}
+.social-login{
+	display: flex;
+	width: 68.8%;
+	flex-direction: column;
+	align-items: center;
+	margin: 0 auto;
+
+}
+
+.social-site {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	width: 24rem;
+	margin: 0 auto;
+}
+
+#google-icon {
+	width: 3rem;
+	height: 3rem;
+	cursor : pointer;
+}
+#kakao-icon{
+	width: 75px;
+	height: 45px;
+	cursor : pointer;
+}
+
+button {
+    font-family: 'Jua', sans-serif;
+    background-color: #34C5F0;
+    border: none;
+    color: white;
+}
+button:hover {background-color: #00B8F0}
+.signinTtitle h3 {
+    color:  black;
+    font-family: 'Jua', sans-serif;
+	font-size: 4rem;
+	margin: 0.5rem 0 0;
+    text-align: center;
+}
+
+.container{
+    min-height: 772px;
+}
+.wrapper{
+    text-align: center;
+    margin-top: 0px;
+}
+
+.logo-item{
+    margin-top:48px;
+}
+
+.login-title-item{
+    display: none;
+    margin-top: 88px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+    letter-spacing: -0.25px;
+    color: #333333;
+}
+#loginFrm{margin-bottom:0;}
+.id-input{
+    margin-top: 50px;
+}
+
+.password-input{
+    margin-top: 8px;
+}
+
+.row{
+    display: flex;
+    justify-content: flex-end;
+    width: 21.25rem;
+    height: 40px;
+    margin: 0 auto;
+    padding-top: 0;
+}
+
+
+.auto-login-item{
+    margin-right: auto;
+}
+
+.find-password-item{
+    margin-left: auto;
+}
+
+.link-divider-item{
+    width: 1px;
+    height: 0.6rem;
+    margin: 0px 0.5rem;
+    background: #DDDDDD;
+}
+
+#order-finder-wrapper {
+	display:none;
+}
+
+#btn-non-member-order {
+	width: 20rem;
+	font-size: 2rem;
+	border-radius: 0.5rem;
+	background-color: #FFF;
+    border: 1px solid #fff;
+    color: #000;
+    cursor: pointer; 
+}
+
+#btn-login, #btn-non-member-finder{
+    width: 20rem;
+    height: 3rem;
+    border-radius: 0.3rem;
+    font-size: 2rem;
+    line-height: 1.1rem;
+    cursor: pointer;
+}
+
+#btn-non-member-finder{ 
+	width: 20rem;
+}
+.btn-wrapper{
+	width: 20rem;
+	margin: 0 auto;
+}
+/* ====================================== popup ====================================== */
+.openBtn {
+    display: flex;
+    justify-content: left;
+    height: 2rem;
+    padding-top: 0;
+}
+
+.openButton{
+    font-family: 'Dongle', sans-serif;  
+    font-size: 1.2rem;
+    text-shadow: none;
+    background : #34C5F0; 
+    color:#fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left:5px; 
+    padding: 4px 6px; 
+    height: 1.9rem;
+}
+th, td { height: 3rem;}

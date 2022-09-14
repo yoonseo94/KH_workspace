@@ -1,0 +1,127 @@
+package com.kh.product.model.service;
+
+import static com.kh.common.JdbcTemplate.close;
+import static com.kh.common.JdbcTemplate.commit;
+import static com.kh.common.JdbcTemplate.getConnection;
+import static com.kh.common.JdbcTemplate.rollback;
+
+import java.sql.Connection;
+import java.util.List;
+
+import com.kh.product.model.dao.ProductDao;
+import com.kh.product.model.exception.InsufficientOutputAmountException;
+import com.kh.product.model.vo.Product;
+import com.kh.product.model.vo.ProductIO;
+
+public class ProductService {
+	/**
+	 * application의 필요한 상수는 주로 업무로직 담당인 Service단에 작성한다.
+	 */
+	public static final String PRODUCT_INPUT = "I";		//입고
+	public static final String PRODUCT_OUTPUT = "O";	//출고
+	
+	private ProductDao productDao = new ProductDao();
+	
+	/**
+	 * 출고시에는 서비스단에서 재고량/출고량 비교 검사를 실시할 수 있고, 부정한 값이 입력된 경우 예외를 던져 controller에서 흐름을 분기하도록 한다.
+	 * @param pio
+	 * @return
+	 */
+	public int insertProductIO(ProductIO pio) {
+		Connection conn = getConnection();
+		/**
+		 * 출고량 유효성 검사
+		 * 출고시, 출고량과 재고량을 비교한다.
+		 */
+		if(PRODUCT_OUTPUT.equals(pio.getStatus())) {
+			Product p = productDao.selectOneProduct(conn, pio.getProductId());
+			//재고량이 출고량보다 적다면, 예외를 던짐
+			if(p.getStock() < pio.getCount())
+				throw new InsufficientOutputAmountException("출고량 (" + pio.getCount() + ")이  재고량 (" + p.getStock() + ") 보다 많습니다.");
+		}
+		
+		int result = 0;
+		try {
+			result = productDao.insertProductIO(conn, pio);
+			commit(conn);
+		} catch (Exception e) {
+			rollback(conn);
+			throw e;
+		} finally {
+			close(conn);			
+		}
+		return result;
+	}
+
+	public List<Product> selectProductList() {
+		Connection conn = getConnection();
+		List<Product> list = productDao.selectProductList(conn);
+		close(conn);
+		return list;
+	}
+
+	public List<ProductIO> selectProductIOList(String productId) {
+		Connection conn = getConnection();
+		List<ProductIO> pioList = productDao.selectProductIOList(conn, productId);
+		close(conn);
+		return pioList;
+	}
+
+	public Product selectOneProduct(String productId){
+		Connection conn = getConnection();
+		Product p = productDao.selectOneProduct(conn, productId);
+		close(conn);
+		return p;
+	}
+
+	public List<Product> searchProductBy(String column, String keyword){
+		Connection conn = getConnection();
+		List<Product> list = productDao.searchProductBy(conn, column, keyword);
+		close(conn);
+		return list;
+	}
+
+	public int insertProduct(Product product) {
+		Connection conn = getConnection();
+		int result = 0;
+		try {
+			result = productDao.insertProductDetail(conn, product);
+			result = productDao.insertProductStock(conn, product);
+			commit(conn);
+		} catch(Exception e) {
+			rollback(conn); // 두개의 query는 모두 성공 또는 모두 실패해야 하므로, 예외가 발생한 경우 모두 rollback한다.
+			throw e;
+		}
+		return result;
+	}
+
+	public int updateProduct(Product product) {
+		Connection conn = getConnection();
+		int result = 0;
+		try {
+			result = productDao.updateProduct(conn, product);
+			commit(conn);
+		} catch (Exception e) {
+			rollback(conn);
+			throw e;
+		} finally {
+			close(conn);			
+		}
+		return result;
+	}
+
+	public int deleteProduct(String productId){
+		Connection conn = getConnection();
+		int result = 0;
+		try {
+			result = productDao.deleteProduct(conn, productId);
+			commit(conn);
+		} catch (Exception e) {
+			rollback(conn);
+			throw e;
+		} finally {
+			close(conn);			
+		}
+		return result;
+	}
+}

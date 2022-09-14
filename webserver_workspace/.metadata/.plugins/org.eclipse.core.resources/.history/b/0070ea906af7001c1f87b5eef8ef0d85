@@ -1,0 +1,49 @@
+package kh.java.pattern.strategy;
+
+public class Person {
+	
+	private String name;
+	private Pet pet; // Person은 Dog, Cat의 존재를 몰라도 Pet타입으로 제어할 수 있다.
+	
+	public Person() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Person(String name, Pet pet) {
+		super();
+		this.name = name;
+		this.pet = pet;
+	}
+	
+	public void playWithPet() {
+		System.out.println(pet.getName() + "야~ ");
+		System.out.println(pet.getReply());
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Pet getPet() {
+		return pet;
+	}
+
+	public void setPet(Pet pet) {
+		this.pet = pet;
+	}
+
+	@Override
+	public String toString() {
+		return "Person [name=" + name + ", pet=" + pet + "]";
+	}
+	
+	
+	
+	
+	
+}

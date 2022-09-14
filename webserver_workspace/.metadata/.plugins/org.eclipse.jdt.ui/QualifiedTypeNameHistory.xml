@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="com.kh.animal.Dog"/>
+    <fullyQualifiedTypeName name="com.kh.animal.Cat"/>
+    <fullyQualifiedTypeName name="com.kh.animal.Snake"/>
+    <fullyQualifiedTypeName name="org.apache.catalina.tribes.util.Arrays"/>
+    <fullyQualifiedTypeName name="java.sql.Statement"/>
+    <fullyQualifiedTypeName name="java.security.MessageDigest"/>
+    <fullyQualifiedTypeName name="java.util.Base64"/>
+    <fullyQualifiedTypeName name="java.util.Base64.Encoder"/>
+    <fullyQualifiedTypeName name="member.model.exception.MemberException"/>
+    <fullyQualifiedTypeName name="java.util.Enumeration"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+    <fullyQualifiedTypeName name="member.model.dto.MemberRole"/>
+    <fullyQualifiedTypeName name="common.HelloMvcUtils"/>
+    <fullyQualifiedTypeName name="board.model.exception.BoardException"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.Cookie"/>
+    <fullyQualifiedTypeName name="java.net.URLEncoder"/>
+    <fullyQualifiedTypeName name="com.oreilly.servlet.MultipartRequest"/>
+    <fullyQualifiedTypeName name="common.HelloMvcFileRenamePolicy"/>
+    <fullyQualifiedTypeName name="java.io.File"/>
+    <fullyQualifiedTypeName name="board.model.dto.BoardComment"/>
+    <fullyQualifiedTypeName name="java.lang.IllegalArgumentException"/>
+    <fullyQualifiedTypeName name="com.kh.ajax.celeb.dto.Celeb"/>
+    <fullyQualifiedTypeName name="com.kh.ajax.celeb.dto.CelebType"/>
+    <fullyQualifiedTypeName name="photo.model.dao.PhotoDao"/>
+    <fullyQualifiedTypeName name="common.JdbcTemplate"/>
+    <fullyQualifiedTypeName name="java.sql.Date"/>
+    <fullyQualifiedTypeName name="photo.model.dto.Photo"/>
+    <fullyQualifiedTypeName name="javax.websocket.OnError"/>
+    <fullyQualifiedTypeName name="javax.websocket.server.ServerEndpointConfig.Configurator"/>
+    <fullyQualifiedTypeName name="member.model.dto.Member"/>
+    <fullyQualifiedTypeName name="java.util.Collections"/>
+    <fullyQualifiedTypeName name="chat.ws.HelloWebSocket"/>
+    <fullyQualifiedTypeName name="javax.websocket.Session"/>
+    <fullyQualifiedTypeName name="java.util.Arrays"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="com.kh.person.model.dto.Person"/>
+    <fullyQualifiedTypeName name="java.io.FileReader"/>
+    <fullyQualifiedTypeName name="java.util.Set"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="com.kh.student.model.dto.Student"/>
+    <fullyQualifiedTypeName name="com.kh.common.SqlSessionTemplate"/>
+</qualifiedTypeNameHistroy>

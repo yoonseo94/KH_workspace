@@ -1,0 +1,8 @@
+package com.chun.student.model.vo.intergrated;
+
+public class Grade {
+	private String termNo;
+	private Student student;
+	private Class clazz;
+	private double point;
+}

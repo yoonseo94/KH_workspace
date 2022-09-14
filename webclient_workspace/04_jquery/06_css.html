@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>css</title>
+  <script src="js/jquery-3.6.0.js"></script>
+  <script
+    src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"
+    integrity="sha256-6XMVI0zB8cRzfZjqKcD01PBsAy3FlDASrlC8SxCpInY="
+    crossorigin="anonymous"></script>
+  <style>
+  img {
+    width: 500px;
+  }
+  </style>
+</head>
+<body>
+  <h1>css</h1>
+  <div>
+    <button id="btn1">show</button>
+    <button id="btn2">hide</button>
+    <button id="btn3">toggle</button>
+    <br><br>
+    <img src="../sample/image/river1.PNG" alt="" id="river">
+  </div>
+  <script>
+  /**
+   * show(speed, easing, callback)
+   * hide(speed, easing, callback)
+   * toggle(speed, easing, callback)
+   * - speed 밀리초
+   */
+  $(btn1).click(() => {
+    $(river).show(500);
+  });
+  $(btn2).click(() => {
+    $(river).hide(500);
+  });
+  $(btn3).click(() => {
+    $(river).toggle(10000, 'swing', () => {
+      alert("토글완료!");
+    });
+  });
+  </script>
+
+  <div class="wrapper">
+    <!-- (div.menu+p.content)*5 -->
+    <div class="menu">HTML</div>
+    <p class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum vel officia illum, sapiente voluptatum beatae in quam! Beatae perspiciatis perferendis quae et eos nulla, incidunt a. Deleniti consequuntur ex explicabo?</p>
+    <div class="menu">CSS</div>
+    <p class="content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla incidunt a in deserunt quis deleniti maiores cupiditate fugiat sit exercitationem, perferendis animi dolore, atque blanditiis, quas voluptatem. Veniam, nesciunt reprehenderit?</p>
+    <div class="menu">JAVASCRIPT</div>
+    <p class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur facilis nobis enim fugit magni, quasi et sunt rerum deleniti, iusto asperiores eum voluptatem iste placeat minus ab nisi illum perspiciatis.</p>
+    <div class="menu">JQUERY</div>
+    <p class="content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis perferendis autem, quae fugiat earum obcaecati quibusdam saepe laborum velit quasi. Sunt corrupti natus placeat asperiores maiores hic, fugiat modi ipsa.</p>
+    <div class="menu">HTML5 API</div>
+    <p class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque minima veritatis blanditiis nam nulla amet nemo. Porro exercitationem fugit itaque fuga quia sapiente nostrum facere illo! Nihil recusandae consequuntur impedit!</p>
+  </div>
+  <style>
+  .menu {
+    width: 300px;
+    height: 30px;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid lightgreen;
+  }
+  .content {
+    width: 300px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    margin: 3px 0;
+    padding: 3px;
+    display: none;
+  }
+  </style>
+  <script>
+  /**
+   * slideDown(speed, easing, callback)
+   * slideUp(speed, easing, callback)
+   * slideToggle(speed, easing, callback)
+   * - speed 기본값 400 millis
+   */
+  $(".menu").click((e) => {
+    // $(e.target)
+    //   .next()
+      // .slideDown();
+      // .slideUp();
+      // .slideToggle();
+
+      // 아코디언
+      $(e.target)
+        .next()
+        .slideToggle()
+        .siblings(".content")
+        .slideUp();
+  });
+  </script>
+
+  <br><br>
+
+  <div style="border:1px solid gray;">
+    <button id="btn4">fadeIn</button>
+    <button id="btn5">fadeOut</button>
+    <button id="btn6">fadeToggle</button>
+    <br><br>
+    <img src="../sample/image/river2.PNG" alt="" id="river2">
+  </div>
+  <script>
+  /**
+   * fadeIn(speed, easing, callback)
+   * fadeOut(speed, easing, callback)
+   * fadeToggle(speed, easing, callback)
+   */
+  $(btn4).click(() => {
+    $(river2).fadeIn();
+  });
+  $(btn5).click(() => {
+    $(river2).fadeOut();
+  });
+  $(btn6).click(() => {
+    $(river2).fadeToggle();
+  });
+  </script>
+
+  <button id="btn7">animate</button>
+  <div class="box"></div>
+  <style>
+  .box {
+    width: 200px;
+    height: 200px;
+    background-color: orangered;
+    position: relative;
+    margin: 10px 0;
+  }
+  </style>
+  <script>
+  /**
+   * animate(styleProps, duration, easing, callback)
+   * - https://www.w3schools.com/jquery/eff_animate.asp
+   */
+  $(btn7).click(() => {
+    const style1 = {
+      "width" : "500px",
+      "height" : "500px",
+      "border-radius": "50%",
+      "background-color" : "#008B8B" // darkcyan 작동안함! #008B8B 작동함!
+    };
+    const style2 = {
+      "width" : "400px",
+      "height" : "400px",
+      "background-color" : "yellow"
+    };
+    $(".box").animate(style1, 1000, () => {
+      $(".box").animate(style2, 1500, () => {
+        
+      });
+    });
+  });
+  </script>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

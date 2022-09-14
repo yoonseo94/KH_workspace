@@ -1,0 +1,16 @@
+package com.kh.employee.model.dao;
+
+import java.util.List;
+
+import com.kh.employee.model.vo.Employee;
+
+public class EmployeeDao {
+
+	public List<Employee> findByJobName(String string) {
+
+		
+		
+		return null;
+	}
+
+}

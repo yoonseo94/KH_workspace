@@ -1,0 +1,11 @@
+package com.kh.emp.controller;
+
+import com.kh.common.AbstractController;
+
+public class EmpSearchController1 extends AbstractController {
+
+	public EmpSearchController1() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

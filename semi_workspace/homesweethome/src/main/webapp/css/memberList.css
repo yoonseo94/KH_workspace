@@ -1,0 +1,53 @@
+@charset "UTF-8";
+#content{	font-family: 'Noto Sans KR', sans-serif;}
+#memberList-container{width: 75%; margin: 0 auto;}
+#title-wrapper{width: 14%; margin: 0 auto;}
+#cont-title{
+	font-size: 3rem;
+}
+#search-container{
+	display:flex; align-items: center;	height: 3rem;
+}
+#search-container label{
+	font-size: 1.5rem; padding: 0 0.5rem;
+}
+.search-frm{ display: flex; align-items: center; justify-content: space-evenly; width: 22.5rem; padding: 0 0.5rem;}
+#searchType{ height: 2.125rem; width: 4rem; border: 1px solid #34C5F0; border-radius: 0.3rem; font-weight: bold; }
+#searchType:focus, .input-val:focus, .member-role:focus{  outline: none;}
+.input-val{ height: 2rem; width: 16rem; font-weight: bold; border: 1px solid #34C5F0; border-radius: 0.3rem; padding: 0 0.5rem;}
+.btn-finder{
+	width: 4rem;
+	height: 2.1rem;
+	font-size: 1.1rem;
+	color: #fff;
+	border: none;
+	border-radius: 0.3rem;
+	background-color:  #34C5F0;
+	cursor:pointer;
+	padding: 0 0.5rem;
+}
+#search-memberId, #search-memberName{
+	padding: 0;
+}
+.btn-suspension, .btn-forced-withdrawal{
+	width: 5rem;
+	height: 2rem;
+	font-size: 1.05rem;
+	color: #fff;
+	border: none;
+	border-radius: 0.3rem;
+	background-color:  #34C5F0;
+	cursor:pointer
+	
+}
+.btn-suspension:hover, .btn-forced-withdrawal:hover, .btn-finder:hover{
+	font-weight: bold;
+}
+.hr1{
+	border: 1px solid  #34C5F0;
+}
+#tbl-member{margin: 0 auto;}
+table#tbl-member th, table#tbl-member td{height: 3rem; padding: 0.15rem; text-align:center;}
+table#tbl-member th{font-size: 1.2rem;}
+.member-role{border: 1px solid #34C5F0; border-radius: 0.3rem;}
+#pagebar{display:flex; justify-content: center; align-items: center; width: 30%; margin: 0 auto;}

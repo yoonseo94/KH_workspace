@@ -1,0 +1,7 @@
+<classpath>
+  <container id="hello-mvc!org.eclipse.jst.j2ee.internal.web.container">
+    <entry id="D:/Workspaces/webserver_workspace/hello-mvc/src/main/webapp/WEB-INF/lib/cos.jar">
+      <source-attachment-path>D:/dev/cos-20.08.zip</source-attachment-path>
+    </entry>
+  </container>
+</classpath>

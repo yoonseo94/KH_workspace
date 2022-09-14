@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+  <title>글꼴관련</title>
+</head>
+<body>
+  <h1>글꼴관련</h1>
+  <div>
+    <!-- p#p${abcdefg 1234567890 가나다라마바사}*3 -->
+    <p id="p1">abcdefg 1234567890 가나다라마바사</p>
+    <p id="p2">abcdefg 1234567890 가나다라마바사</p>
+    <p id="p3">abcdefg 1234567890 가나다라마바사</p>
+  </div>
+  <style>
+  /* 구체적 -> 보편적 Generic Family */
+  /* 
+    cursive 필기체
+    monospaced 동일간격 폰트
+    serif 글자 끝 장식이 있는 폰트
+    sans-serif 글자 끝 장식이 없는 폰트
+  */
+  #p1 {
+    font-family: 홍길동날라차기체, 휴먼모음T, 고딕체;
+  }
+  #p2 {
+    font-family: 'Do Hyeon', sans-serif;
+  }
+  #p3 {
+    font-family: 'Roboto', sans-serif;
+  }
+  </style>
+
+  <!-- div>ul>li*3 -->
+  <div id="wrapper">
+    <ul>
+      <li>절대단위 px</li>
+      <li>상대단위 em</li>
+      <li>상대단위 rem</li>
+      <li>상대단위 %</li>
+    </ul>
+  </div>
+  <style>
+  :root {font-size: 16px;}
+  div#wrapper {font-size: 20px;}
+  div#wrapper li:first-of-type {font-size : 32px;}
+  div#wrapper li:nth-of-type(2) {font-size : 2em}
+  div#wrapper li:nth-of-type(3) {font-size : 2rem}
+  div#wrapper li:last-of-type {font-size : 200%;}
+  </style>
+
+  <!-- div>(p>lorem)*2 -->
+  <div id="container">
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium quisquam ullam suscipit sunt culpa saepe, consectetur deserunt explicabo assumenda libero aut, iusto ratione quod odio qui architecto, vel totam modi!</p>
+    <p>Fuga hic tenetur est molestias culpa in earum dicta laboriosam illo, quisquam voluptate assumenda eum voluptatem accusamus harum necessitatibus, aliquam, beatae quaerat facere veniam dolor! Distinctio praesentium doloribus officiis minus.</p>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident deleniti quisquam ex culpa dolorem, similique doloribus possimus, eligendi quos tenetur, commodi molestias atque obcaecati non deserunt. Aperiam perferendis dicta doloremque.</p>
+  </div>
+  <style>
+  #container p:first-child {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold; /* light(100) ~ normal(400) ~ bold(700) | 100 ~ 900 */
+  }
+  #container p:nth-child(2) {
+    font-style: italic;
+    line-height: 2em;
+  }
+  #container p:last-child {
+    font: italic 700 24px/30px 'Roboto';
+  }
+  </style>
+  
+</body>
+</html>

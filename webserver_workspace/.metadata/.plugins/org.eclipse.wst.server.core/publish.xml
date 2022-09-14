@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<publish-info>
+  <server id="hello-web-server" path="publish0.dat"/>
+  <server id="hello-mvc-server" path="publish1.dat"/>
+  <server id="ajax-server" path="publish2.dat"/>
+  <server id="hello-maven-server" path="publish5.dat"/>
+  <server id="hello-mybatis-server" path="publish6.dat"/>
+  <server id="cowork-server" path="publish3.dat"/>
+  <server id="action-el-server" path="publish4.dat"/>
+</publish-info>

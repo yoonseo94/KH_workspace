@@ -1,0 +1,41 @@
+package kh.java.reflection;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Main main = new Main();
+		main.test1();
+	}
+
+	/**
+	 * Reflection API
+	 * - 클래스객체의 정보를 가지고 객체를 제어하는 기술
+	 * - 생성자호출 | 메소드호출 | 필드값 제어
+	 */
+	private void test1() {
+		Sample sample1 = new Sample();
+		System.out.println(sample1);
+		
+		Sample sample3 = new Sample(123, "abc");
+		System.out.println(sample3);
+		
+		try {
+			// 클래스객체 가져오기
+			Class<?> clz = Class.forName("kh.java.reflection.Sample");
+			System.out.println(clz);
+			
+			Class<?>[] param = null;
+			Constructor<Sample> constructor1 = (Constructor<Sample>) clz.getDeclaredConstructor(param);
+			Sample sample2 = constructor1.newInstance();
+			System.out.println(sample2);
+			
+		} catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}

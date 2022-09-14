@@ -1,0 +1,23 @@
+package com.kh.product.model.vo.sample;
+
+public class Product {
+
+	private ProductDetail productDetail;
+	private ProductStock productStock;
+	
+	public ProductDetail getProductDetail() {
+		return productDetail;
+	}
+	public void setProductDetail(ProductDetail productDetail) {
+		this.productDetail = productDetail;
+	}
+	public ProductStock getProductStock() {
+		return productStock;
+	}
+	public void setProductStock(ProductStock productStock) {
+		this.productStock = productStock;
+	}
+
+	
+	
+}

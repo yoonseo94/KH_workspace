@@ -1,0 +1,308 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+body {
+    margin: 0;
+    font-family: "Noto Sans KR", sans-serif;
+    
+}
+.header {
+    position: fixed;
+    top:0;
+    width: 100%;
+    z-index:999;
+    background-color: white;
+    border-bottom: 1px solid rgb(216, 215, 215);
+}
+
+.auth-section{
+    height: 40px;
+    border-bottom: 1px solid rgb(216, 215, 215);
+
+    display: flex;
+
+    /* 주축 방향 정렬*/
+    justify-content: end;
+
+    /* 교차축 방향 정렬 */
+    align-items: center;
+}
+.nav-auth {
+    display: flex;
+    flex-direction: row;
+
+
+    margin-right: 50px;
+}
+/* 로그인 회원가입 */
+.nav-auth>li {
+    display: inline-block;
+
+}
+.nav-auth>li::after{
+    padding-left: 5px;
+    padding-right: 5px;
+    content: "";
+}
+.nav-auth>li:last-child::after {
+    content: "";
+}
+.auth-menu {
+    color: #112B3C;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 13px;
+    color: #222222CC;
+    transition: all 0.4s;
+}
+.auth-menu:hover{
+    color: gray;
+    text-decoration: underline;
+}
+
+.container { 
+    display: flex;
+    height: 100px;
+
+}
+
+.logo {
+    margin-left: 50px;
+    width: 20%;
+
+    display: flex;
+    /* 주축 방향 정렬*/
+    justify-content: left;
+
+    /* 교차 축 방향 정렬 */
+    align-items: center;
+}
+.logo img {
+    height: 80px;
+}
+/* header 2. 검색 구역*/
+.search-section {
+    width: 50%;
+
+    display: flex;
+    /* 주축 방향 정렬*/
+    justify-content: right;
+
+    /* 교차 축 방향 정렬 */
+    align-items: center;
+
+}
+/* 검색 구역 - 검색창*/
+.search-bar {
+    width: 670px;
+    height: 40px;
+    border: 1px solid rgb(216, 215, 215);
+    display: flex;
+    border-radius: 5px;
+}
+/* 검색 창 입력 */
+.search-bar>input{
+    font-size: 16px;
+    width: 93%;
+    padding: 11px;
+    border: 0px;
+    outline: none;
+    float: left;
+    margin-left: 10px;
+
+}
+/* 검색 창 - 버튼 */
+.search-bar>button{
+    font-size: 13px;
+    width: 7%;
+    padding: 12px;
+    margin-right: 10px;
+    border: 0px;
+    outline: none;
+    float: right;
+
+    background-color: white;
+}
+
+.search-bar>button>i {
+    font-size: 15px;
+}
+/* 3. 메뉴 */
+.menu {
+    width: 30%;
+
+    margin-right: 60px;
+
+    display: flex;
+
+    /* 주축 방향 정렬*/
+    justify-content: right;
+
+    /* 교차 축 방향 정렬 */
+    align-items: center;
+}
+
+.nav-menu>li {
+    display: inline-block;
+    
+}
+.nav-menu>li::after{
+    content: "|";
+    padding: 1px;
+    font-size: 15px;
+    color:rgb(216, 215, 215);
+    float : right;
+    display: block;
+}
+.nav-menu>li:last-child::after {
+    content: "";
+}
+.nav-menu>li>a:hover{
+    color: gray;
+}
+
+.nav-menu>li>a {
+    color: #112B3C;
+    text-decoration: none;
+
+
+    font-weight: 500;
+    font-size: 16px;
+
+    transition: all 0.4s;
+
+    /*크기*/
+    padding:  0 10px;
+}
+/* 배너 */
+.banner {
+    background-color: rgb(255,242,204);
+    height: 400px;
+    padding-top: 250px;
+    display: flex;
+}
+.banner>.img-section{
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+}
+.img-section>img {
+    width:100%;
+    height: 100%;
+}
+/*판매중인 상품 글*/
+.product_section_title {
+    margin: 0 350px;
+    margin-top : 20px;
+
+}
+.product_section_title .section_title {
+    font-size : 20px;
+    letter-spacing: -.1px;
+    font-weight: 700;
+    color: black;
+}
+
+/* 아이템 목록 */
+.item-list-wrap {
+	margin-bottom : 100px;
+}
+.item-list {
+    display: flex;
+    
+    flex-direction: row;
+
+    margin: 0 300px;
+    margin-top : 40px;
+    padding: 0 30px;
+
+}
+.item-box {
+    width: 25%;
+
+
+    /*위치*/
+    margin-top : 10px;
+    position: relative;
+}
+.item-inner {
+    color: black;
+    text-decoration: none;
+}
+.item {
+    padding: 0 20px;
+
+}
+.item>img {
+    width: 100%;
+    height: 275px;
+    background-color : rgb(244, 244, 244);
+    border-radius: 10px;
+}
+/* 찜하기 버튼 */
+.item-box >.wish-btn {
+    position: absolute;
+    right: 25px;
+    top : 5px;
+
+    /*버튼 크기*/
+    font-size: 17px;
+    border: 0px;
+    background: none;
+}
+.title {
+	height : 40px;
+	font-size: 16px;
+}
+.brand, .price {
+    font-weight: bold;
+    font-size: 14px;
+}
+.brand {
+	text-decoration: underline;
+}
+.productInfo .price {
+    padding: 5px 0;
+}
+.price {
+    margin: 10px 0 10px;
+}
+.other {
+    display: flex;
+    justify-content: space-between;
+}
+.other span {
+    font-size: 14px;
+    color: rgb(188, 188, 188);
+}
+em, .brand {
+    font-style: normal;
+    font-weight: 700;
+}
+
+/* 더보기 버튼 */
+.btn-section{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;   
+    align-items: center; 
+}
+
+.btn-more {
+    margin: 50px auto;
+    background-color: white;
+    border-radius: 15px;
+    border: 1px solid rgb(216, 215, 215);
+    text-align: center;
+    font-size: 15px;
+    padding: 15px 32px;
+    
+    transition : all 0.4s;
+}
+.btn-more:hover {
+    border: 1px solid rgb(143, 143, 143);
+}
+
+footer {
+
+    border-top: 1px solid rgb(216, 215, 215);
+    height: 130px;
+}

@@ -1,0 +1,83 @@
+@charset "UTF-8";
+* {
+    box-sizing: border-box;
+}
+
+.popupFinderFrm-wrapper {
+    position: fixed;
+    left: 50%;
+    top: 0%;
+    width: 500px;
+    height: 380px;
+    transform: translate(-50%, 5%);
+    background-color: #fff;
+    border: 3px solid  #34C5F0;
+    border-radius: 30px;
+}
+
+.pop-title h2 {
+    font-family:'Noto Sans KR', sans-serif;
+	font-size: 3rem;
+	color: #000;
+    margin-top: 30px;
+    text-align: center;
+    
+}
+.pop-finder-inner-wrapper{
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.pop-finder-name-inner{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 500px;
+    height: 60px;
+    margin: 12px auto;
+    
+}
+.pop-finder-id-inner {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    height: 60px;
+    
+}
+.pop-finder-inner-btn{
+	height: 5rem; margin: 1rem auto;
+}
+.btn-cancel {
+    font-family: 'Dongle', sans-serif;
+	font-size: 1.5rem;
+    width: 82px;
+    height: 40px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    color: #fff;
+    margin-top: 0.5rem;
+    background-color:  #34C5F0;
+}
+.btn-cancel:hover {font-weight: bold;}
+
+
+.pop-finder-name-inner strong, .pop-finder-id-inner strong{
+    font-family: 'Dongle', sans-serif;
+	font-size: 2rem;
+  }
+
+ #productId, #nameId{
+      width: 13rem;
+      height: 3rem;
+      font-size: 1rem;
+      border: 1px solid #34C5F0;
+      border-radius: 5px;
+      margin: 0 10px;
+ }
+ #productId:focus, #nameId:focus { outline: none;  border: 2px solid #34C5F0;}  
+#name-label{ width: 128px;}
+#productId-label{ width: 38%; margin: 0 1.5%;}

@@ -1,0 +1,65 @@
+* {
+	box-sizing: border-box
+}
+.section_agree {
+	width: 60%;
+	margin-right: auto;
+	margin-left: auto;
+	height: 100%; /* 코드 작업 완성 후 100%로 바꿀 예정 */
+/* 	border: 1px solid blue; 완성 후 삭제 예정 */
+}
+.title {
+    background-color: #052a78;
+    border: 1px solid #333;
+    height: 40px;
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 10px;
+    color: white;
+    padding: 8px;
+}
+table{
+    margin-left:auto; 
+    margin-right:auto;
+}
+table, td, th {
+    border-collapse : collapse;
+}
+
+.btn_bar1{
+    border: 1px solid #333;
+    float: left;
+    width:49%;
+    box-sizing: border-box;
+    background-color: #052a78;
+    color: white;
+    height: 40px;
+    font-weight: 300;
+    font-size: 16px;
+}
+.btn_bar2 {
+    border: 1px solid #333;
+    float: right;
+    margin-left: 2%;
+    width:49%;
+    box-sizing: border-box;
+    background-color: #052a78;
+    color: white;
+    height: 40px;
+    font-weight: 300;
+}
+
+.btn_bar {
+    width: 100%;
+    margin: 20px auto;
+}
+
+.sub_title{
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.checkbox {
+    zoom: 1.5;
+    vertical-align:-3px;
+}

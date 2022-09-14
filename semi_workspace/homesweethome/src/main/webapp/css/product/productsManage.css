@@ -1,0 +1,64 @@
+@charset "UTF-8";
+#content{	font-family: 'Noto Sans KR', sans-serif;}
+#product-manage-container{width: 82; margin: 0 auto;}
+#title-wrapper{width: 10.5%; margin: 0 auto;}
+#cont-title{
+	font-size: 3rem;
+}
+#search-container{
+	display:flex; align-items: center;	height: 3rem;
+}
+#search-container label{
+	font-size: 1.5rem; padding: 0 0.5rem;
+}
+.search-frm{ display: flex; align-items: center; justify-content: space-evenly; width: 22.5rem; padding: 0 0.5rem;}
+#searchType{ height: 2.125rem; width:7rem; border: 1px solid #34C5F0; border-radius: 0.3rem; font-weight: bold; }
+#searchType:focus, .input-val:focus, .member-role:focus{  outline: none;}
+.input-val{ height: 2rem; width: 16rem; font-weight: bold; border: 1px solid #34C5F0; border-radius: 0.3rem; padding: 0 0.5rem;}
+.btn-finder{
+	width: 4rem;
+	height: 2.1rem;
+	font-size: 1.1rem;
+	color: #fff;
+	border: none;
+	border-radius: 0.3rem;
+	background-color:  #34C5F0;
+	cursor:pointer;
+	padding: 0 0.5rem;
+}
+#search-productId, #search-productName, #search-productMainCategory, #search-productSubCategory, #search-productBrandName, #search-productEnrollDate{
+	padding: 0;
+}
+#btn-product-update, #btn-product-delete{
+	width: 7.5rem;
+	height: 2rem;
+	font-size: 1rem;
+	color: #fff;
+	border: none;
+	border-radius: 0.3rem;
+	background-color:  #34C5F0;
+	cursor:pointer
+}
+#btn-product-delete{width: 6rem;}
+.btn-enroll-wrapper{display:flex; justify-content: flex-end}
+#enrollProduct{
+	width: 6rem;
+	height: 2rem;
+	font-size: 1.05rem;
+	color: #fff;
+	border: none;
+	border-radius: 0.3rem;
+	background-color:  #34C5F0;
+	cursor:pointer
+}
+.btn-product-update:hover, .btn-product-delete:hover, .btn-finder:hover{
+	font-weight: bold;
+}
+.hr1{
+	border: 1px solid  #34C5F0;
+}
+#tbl-product-manage{margin: 0 auto;}
+table#tbl-product-manage th, table#tbl-product-manage td{height: 3rem; padding: 0.15rem; text-align:center;}
+table#tbl-product-manage th{font-size: 1.2rem;}
+.member-role{border: 1px solid #34C5F0; border-radius: 0.3rem;}
+#pagebar{display:flex; justify-content: center; align-items: center; width: 30%; margin: 0 auto;}

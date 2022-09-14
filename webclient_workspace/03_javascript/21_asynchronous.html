@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>비동기처리</title>
+</head>
+<body>
+  <h1>비동기처리</h1>
+  <!-- 
+    자바스크립트는 싱글스레드로 처리된다. 
+    비동기처리함수(Timer API, DOM처리, Event처리, Ajax(XMLHttpRequest))를 만날때만 백그라운드(Web APIs)로 처리를 위임.
+    콜스택의 동기적작업이 완료되면 콜백함수를 실행하는 구조.
+    - heap
+    - call stack
+    - Web APIs
+    - Callback Queue : EventLoop에 의해서 call stack이 비워질때 순차적(FIFO)을 실행
+  -->
+  <button id="btn1">Async - Timer</button>
+  <button id="btn2">Async - DOM</button>
+  <script>
+  btn1.addEventListener('click', () => {
+    // 동기적처리 : foo실행결과를 기다렸다가 다음 코드를 진행. 순서대로 처리
+    // const result = foo();
+    // console.log('result :', result)
+    
+    // 비동기적처리
+    let result;
+    setTimeout(() => {
+      // WebAPIs --> Callback Queue ---> callstack이 비워지면 EventLoop에 의해서 callstack추가/실행
+      result = 100;
+      console.log('result@timer :', result);
+    }, 0);
+
+    console.log('result :', result);
+  });
+
+  const foo = () => {
+    console.log('foo');
+    return 100;
+  }
+
+  /**
+   * DOM
+   * - 외부스크립트를 동적으로 로딩해서 실행하기
+   * 
+   * callback함수
+   * - 비동기적인 처리가 완료되면 실행하는 함수
+   * 
+   * bar호출이 완료되면, car@2.js 호출
+   */
+  btn2.addEventListener('click', () => {  
+    // loadScript('js/1.js');
+    // bar(); // Uncaught ReferenceError: bar is not defined
+
+    let src;
+    // callback함수이용
+    loadScript('js/1.js', (script) => { 
+      console.log(`${script.src} loading 완료!`);
+      bar();
+    });
+
+
+    loadScript('js/1.js', (script) => { 
+      console.log(`${script.src} loading 완료!`);
+      src = bar();
+      loadScript(src, (script) => { 
+        console.log(`${script.src} loading 완료!`);
+        src = car();
+        loadScript(src, (script) => { 
+          console.log(`${script.src} loading 완료!`);
+          dar();
+        });
+      });
+    });
+  });
+
+  /**
+   * <script src='js/1.js'>&lt;/script>
+   */
+  const loadScript = (src, callback) => {
+    // console.log(typeof callback, callback);
+    const script = document.createElement('script');
+    script.src = src;
+    script.onload = () => {
+      // script태그 loadng완료시 호출한 핸들러로 바인딩
+      callback(script); 
+    }
+    // DOM에 추가 (비동기처리)
+    document.head.append(script);
+  }
+  </script>
+
+  <br>
+  <br>
+
+  <button id="btn3">Promise</button>
+  <button id="btn4">Promise - setTimeout</button>
+  <button id="btn5">Promise - 처리순서</button>
+  <script>
+  /**
+   * Promise
+   * - producer code 비동기
+   * - consumer code 콜백
+   * - Promise는 producer와 consumer코드를 연결시키는 객체
+   * - callback hell을 제거, 아래로 코드를 연이어 작성할 수 있다.
+   * 
+   * 속성
+   * - status : 
+   *      pending -> 정상처리 fulfilled (이행)
+   *              -> 오류    rejected  (거부)
+   * - result
+   *      undefined -> 정상처리시 value
+   *                -> 오류   예외객체
+   * 
+   * 
+   */
+  btn3.addEventListener('click', () => {
+    // resolve : 성공시 콜백함수
+    // reject : 실패시 콜백함수 
+    const promise = new Promise((resolve, reject) => {
+      try {
+        // 비동기 작업 Producer Code
+        console.log('Producing........');
+        // throw new Error("비동기 작업중 - 으악!!!!");
+        resolve(12345); // callback에 전달할 value값
+      } catch (e) {
+        reject(e);
+      }
+    });
+    // console.log(promise);
+
+    // then(resolve콜백함수, reject콜백함수)
+    // then(resolve콜백함수).catch(reject콜백함수)
+    promise
+      .then((value) => {
+        console.log('Consuming.....');
+        console.log('성공 : ', value);
+      })
+      .catch((err) => {
+        console.error('실패 : ', err);
+      });
+
+    promise
+      .then((value) => {
+        console.log('Consuming.....');
+        console.log('성공 : ', value);
+      }, (err) => {
+        console.error('실패 : ', err);
+      });
+
+  });
+
+  /**
+   * setTimeout을 promise 통해 사용하기
+   */
+  btn4.addEventListener('click', () => {
+    timeoutPromise('안녕',  3000)
+      .then((value) => {
+        console.log(value);
+      });
+  });
+
+  const timeoutPromise = (msg, millis) => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => resolve(msg), millis);
+    });
+  };
+
+  /**
+   * 
+   * then 프라미스를 리턴하므로, 이후 실행코드는 다시 then절 작성가능하다.
+   */
+  btn5.addEventListener('click', () => {
+    console.log(
+      orderPromise()
+        .then((value) => {
+          console.log(value);
+        })
+        .then(() => {
+          console.log('finished.......');
+        })
+    );
+  });
+
+  const orderPromise = () => new Promise((resolve, reject) => {
+    console.log('promise producing....');
+    resolve('abc');
+  });
+  </script>
+
+  <button id="btn6">promise - loadScript</button>
+  <button id="btn7">promise chain</button>
+  <script>
+  /**
+   * 1.js를 동적으로 로드후, bar호출
+   */
+  btn6.addEventListener('click', () => {
+    // loadScript('js/1.js', () => {
+    //   bar();
+    // });
+
+    loadScriptPromise('js/1.js')
+      .then((value) => {
+        console.log(`${value} 로딩 완료!`);
+        const src = bar();
+        return loadScriptPromise(src); // 명시적으로 promise 리턴하기
+      })
+      .then((value) => {
+        console.log(`${value} 로딩 완료!`);
+        const src = car();
+        return loadScriptPromise(src);
+      })
+      .then((value) => {
+        console.log(`${value} 로딩 완료!`);
+        dar();
+      });
+      
+  });
+
+  const loadScriptPromise = (src) => new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = src;
+    script.onload = () => resolve(src);
+    document.head.append(script);
+  });
+
+  /**
+   * Promise Chain
+   * - Promise#then는 암묵적으로 promise객체를 리턴한다.
+   * - Promise#then에서 값을 리턴하면 암묵적 Promise객체의 result값이 된다.
+   * - Promise#then안에서 명시적으로 Promise객체를 리턴할 수 있다.
+   */
+  btn7.addEventListener('click', () => {
+    new Promise((resolve, reject) => {
+      // console.log(resolve); // ƒ () { [native code] }
+      // console.log(reject); // ƒ () { [native code] }
+      setTimeout(() => resolve(100), 1000);
+    })
+    .then((value) => {
+      console.log(value);
+      return value * 2;
+    })
+    .then((value) => {
+      console.log(value);
+      return value * 2;
+    })
+    .then(value => console.log(value));
+  });
+  </script>
+
+  <br><br>
+  <button id="btn8">async | await</button>
+  <button id="btn9">async | await - loadScript</button>
+  <script>
+  /**
+   * async 
+   * - ES2017에 추가된 문법
+   * - 일반함수의 promise화를 지원하는 문법
+   * 
+   * await
+   * - async함수안에서만 사용이 가능
+   * - promise의 동기적처리를 지원
+   */
+  btn8.addEventListener('click', async () => {
+    zoo()
+      .then((value) => console.log(value));
+
+    // qoo()
+    //   .then((value) => console.log(value));
+    
+    // await 프라미스의 결과값으로 동기적으로 반환
+    const result = await qoo();
+    console.log(result);
+
+    const result2 = await xoo(); // 3초후 resolve실행
+    console.log(result2);
+
+  });
+
+  const xoo = () => new Promise((resolve) => {
+    setTimeout(() => resolve(99), 3000);
+  });
+
+  const qoo = () => new Promise((resolve) => resolve(100));
+  
+  const zoo = async () => {
+    return 10;
+  };
+
+  // top-level에서 await을 사용하려는 경우 iife 안에서 사용할 것
+  (async () => {
+    const result = await xoo();
+    console.log('iife result : ', result);
+  })();
+
+
+  btn9.addEventListener('click', async () => {
+    // loadScriptPromise('js/1.js')
+    //   .then((src) => {
+    //     console.log(src, "로딩완료!");
+    //     const path = bar();
+    //     return loadScriptPromise(path);
+    //   })
+    //   .then((src) => {  
+    //     console.log(src, "로딩완료!");
+    //     car();
+    //   });
+
+    let src = await loadScriptPromise('js/1.js');
+    console.log(src, '로딩 완료!');
+    src = bar(); // js/2.js
+    await loadScriptPromise(src); // result를 사용하지 않는 경우
+    car();
+
+  });
+  </script>
+  
+  <br><br>
+  <button id="btn10">Promise.all</button>
+  <script>
+  /**
+   * Promise API
+   * - Promise.all([promise1, promise2, ...])
+   *    - 모든 promise를 병렬적으로 실행후, 모든 promise가 완료되었을때 then절의 callback실행
+   *    - 모든 promise성공시, fullfilled(이행)
+   *    - 하나라도 실패시, rejected(거부)
+   * - Promise.allSettled
+   * - Promise.race
+   * - Promise.resolve
+   * - Promise.reject
+   */
+  btn10.addEventListener('click', async () => {
+    const promises = [
+      loadScriptPromise('js/1.js'),
+      loadScriptPromise('js/2.js'),
+      loadScriptPromise('js/3.js'),
+    ];
+    // Promise.all(promises)
+    //   .then(values => {
+    //     values.forEach((value) => console.log(`${value} 로딩완료!`));
+    //     bar();
+    //     car();
+    //     dar();
+    //   });
+    
+    const values = await Promise.all(promises);
+    values.forEach((value) => console.log(`${value} 로딩완료!`));
+    bar();
+    car();
+    dar();
+  });
+  </script>
+  
+</body>
+</html>

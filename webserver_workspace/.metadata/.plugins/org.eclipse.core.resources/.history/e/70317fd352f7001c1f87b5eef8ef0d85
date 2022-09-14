@@ -1,0 +1,10 @@
+package com.kh.common;
+
+/**
+ * 
+ * 
+ *
+ */
+public abstract class AbstractController {
+
+}

@@ -1,0 +1,4 @@
+1648782816826	Extract method 'productResultSetHandler'
+1648783391524	Delete element
+1648783463798	Extract method 'productIOResultSetHandler'
+1648783765535	Rename local variable 'p'

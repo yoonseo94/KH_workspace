@@ -1,0 +1,18 @@
+<%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<html>
+<head>
+<meta charset="utf-8"/>
+</head>
+<body>
+	<h2>Hello World!</h2>
+	<button id="btn">확인</button>
+	
+	<script>
+	document.querySelector("#btn").addEventListener('click', (e) => {
+		$.ajax({
+			
+		});		
+	});
+	</script>
+</body>
+</html>

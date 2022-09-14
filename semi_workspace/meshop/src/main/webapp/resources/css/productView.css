@@ -1,0 +1,137 @@
+#headerr {
+    display: flex;
+    justify-content: space-between;
+    width: 1024px;
+    margin: 250px auto;
+}
+#headerr > section {
+    /* border: 1px solid black; */
+    padding: 0 40px;
+}
+#imgSection {
+    width: 443px;
+    border-right: 1px solid rgb(197, 197, 197);;
+}
+#imgSection div {
+    margin: 0 auto;
+}
+
+/* slider */
+.productImg input[type=radio] {
+    position: relative;
+    left: -999em;
+}
+.productImg {
+    width: 400px; height: 400px;
+    border-radius: 10px 10px;
+    background-color: rgb(244, 244, 244);
+    padding: 0;
+}
+.bullets {
+	display: flex;
+	justify-content: center;
+    position: relative;
+    top: 350px;
+    z-index: 2;
+}
+.bullets label {
+	position: relative;
+    display: inline-block;
+    border-radius: 50%;
+    background-color: rgba(129, 128, 128, 0.55);
+    width: 10px; height: 10px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+.productImg input[type=radio]:nth-child(1):checked~.bullets>label:nth-child(1){
+    background-color: #fff;
+}
+.productImg input[type=radio]:nth-child(2):checked~.bullets>label:nth-child(2){
+    background-color: #fff;
+}
+.productImg input[type=radio]:nth-child(3):checked~.bullets>label:nth-child(3){
+    background-color: #fff;
+}
+
+/* infoSection */
+.view-brand {
+    font-size: 23px;
+    font-weight: bold;
+}
+.view-title {
+    font-size: 17px;
+    padding : 5px 5px 5px 0;
+    border-bottom: 1px solid rgb(197, 197, 197);
+}
+.view-price {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+.view-price div {
+    display: inline-block;
+    padding: 10px 0;
+    font-size: 23px;
+}
+.view-price button {
+    border-style: none;
+    background-color: #fff;
+    color: rgb(151, 149, 149);
+    font-size: 13px;
+    cursor: pointer;
+}
+.view-btn {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 70px;
+}
+.view-btn button{
+	display: inline-block;
+    border-style: none;
+    border-radius: 5px;
+    width: 100px; height: 50px;
+    cursor: pointer;
+}
+.wish-btn{
+    font-size: 18px;
+    width: 100px;
+}
+#buyBtn {
+    background-color: rgb(219, 217, 217);
+    margin-left: 10px;
+    width: 300px;
+}
+.date-place div {
+    padding: 0 10px 0 0;
+    display: inline-block;
+    color: rgb(171, 171, 171);
+}
+.date-place {
+    font-size: 13px;
+    padding: 2px 0;
+}
+.boxTitle {
+    padding: 50px 0 5px 0;
+    border-bottom: 1px solid rgb(197, 197, 197);
+}
+.boxTitle ~ div {
+    padding: 15px 0;
+}
+.storeBox * {
+    display: flex;
+    justify-content: flex-start;
+}
+.storeBox img {
+    width: 50px;
+}
+.storeBox a {
+    padding: 6px 30px 0 30px;
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+}
+
+.wish-btn {
+    /*버튼 크기*/
+    font-size: 15px;
+}

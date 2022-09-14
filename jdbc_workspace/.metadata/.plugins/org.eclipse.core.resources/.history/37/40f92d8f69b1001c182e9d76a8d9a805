@@ -1,0 +1,332 @@
+package com.kh.product.model.dao;
+
+import static com.kh.common.JdbcTemplate.close;
+
+import java.io.FileReader;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
+
+import com.kh.product.model.exception.ProductException;
+import com.kh.product.model.vo.Product;
+import com.kh.product.model.vo.ProductIO;
+
+public class ProductDao {
+	private Properties prop = new Properties();
+
+	public ProductDao() {
+		try {
+			prop.load(new FileReader("resources/product-query.properties"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public List<Product> selectProductList(Connection conn) {
+		List<Product> list = new ArrayList<Product>();;
+		Statement stmt = null;
+		ResultSet rset = null;
+
+		String query = prop.getProperty("selectProductList");
+		try {
+			// 1. 쿼리문을 실행할 statement객체 생성
+			stmt = conn.createStatement();
+			// 2. 쿼리문 전송, 실행결과 받기
+			rset = stmt.executeQuery(query);
+			// 3. 받은 결과값들을 객체에 옮겨 저장하기
+			while (rset.next()) {
+				Product p = new Product();
+				// 컬럼명은 대소문자 구분이 없다.
+				p.setId(rset.getString("id"));
+				p.setBrand(rset.getString("brand"));
+				p.setName(rset.getString("name"));
+				p.setPrice(rset.getInt("price"));
+				p.setMonitorSize(rset.getInt("monitor_size"));
+				p.setOs(rset.getString("os"));
+				p.setStorage(rset.getInt("storage"));
+				p.setRegDate(rset.getDate("reg_date"));
+				p.setStock(rset.getInt("stock"));
+				list.add(p);
+			}
+
+		} catch (Exception e) {
+			throw new ProductException("전체 상품 조회 오류(" + e.getMessage() + ")", e);
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		return list;
+	}
+
+	public int insertProductIO(Connection conn, ProductIO pio) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+
+		String query = prop.getProperty("insertProductIO");
+		try {
+
+			// 1. 미완성쿼리문을 가지고 PreparedStatement객체생성
+			pstmt = conn.prepareStatement(query);
+			// 객체생성후 ? 부분 값대입.
+			pstmt.setString(1, pio.getProductId());
+			pstmt.setInt(2, pio.getCount());
+			pstmt.setString(3, pio.getStatus());
+
+			// 2. 쿼리문 실행, 실행결과 받기
+			result = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			// 사용자 정의 예외 던짐.
+			throw new ProductException("입고 오류 : " + e.getMessage(), e);
+		} finally {
+			close(pstmt);
+		}
+
+		return result;
+	}
+
+	public List<ProductIO> selectProductIOList(Connection conn, String productId) {
+		List<ProductIO> list = new ArrayList<ProductIO>();
+
+		// 사용후 반납해야할(close)자원들은 try~catch문 바깥에서 선언해야 한다.
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+
+		String query = prop.getProperty("selectProductIOList");
+		try {
+			// 1. 쿼리문을 실행할 statement객체 생성
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, productId);
+
+			// 2. 쿼리문 전송, 실행결과 받기
+			rset = pstmt.executeQuery();
+
+			// 3. 받은 결과값들을 객체에 옮겨 저장하기
+			while (rset.next()) {
+				ProductIO pio = new ProductIO(); // 추가한 컬럼을 처리하기 위한 ProductIO는 Product를 상속한다.
+				pio.setNo(rset.getInt("no"));
+				pio.setProductId(rset.getString("product_id"));
+				pio.setCount(rset.getInt("count"));
+				pio.setStatus(rset.getString("status"));
+				pio.setIoDate(rset.getTimestamp("io_datetime"));
+				
+				pio.setName(rset.getString("name"));
+				pio.setBrand(rset.getString("brand"));
+				pio.setStock(rset.getInt("stock"));
+				list.add(pio);
+			}
+
+		} catch (Exception e) {
+			// 사용자 정의 예외 던짐.
+			throw new ProductException("입출고 조회 오류! : " + e.getMessage(), e);
+
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+
+		return list;
+	}
+
+	public Product selectOneProduct(Connection conn, String productId) {
+		Product product = null;
+
+		// 사용후 반납해야할(close)자원들은 try~catch문 바깥에서 선언해야 한다.
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+
+		String query = prop.getProperty("selectOneProduct");
+		try {
+			// 1. 쿼리문을 실행할 statement객체 생성
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, productId);
+			// 2. 쿼리문 전송, 실행결과 받기
+			rset = pstmt.executeQuery();
+
+			// 3. 받은 결과값들을 객체에 옮겨 저장하기
+			while (rset.next()) {
+				product = new Product();
+				// 컬럼명은 대소문자 구분이 없다.
+				product.setId(rset.getString("id"));
+				product.setBrand(rset.getString("brand"));
+				product.setName(rset.getString("name"));
+				product.setPrice(rset.getInt("price"));
+				product.setMonitorSize(rset.getInt("monitor_size"));
+				product.setOs(rset.getString("os"));
+				product.setStorage(rset.getInt("storage"));
+				product.setRegDate(rset.getDate("reg_date"));
+				product.setStock(rset.getInt("stock"));
+			}
+
+		} catch (Exception e) {
+			// 사용자 정의 예외 던짐.
+			throw new ProductException("상품 1건 조회 오류! : " + e.getMessage(), e);
+
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+
+		return product;
+	}
+
+	public List<Product> searchProductBy(Connection conn, String column, String keyword){
+		List<Product> list = new ArrayList<>();
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+
+		String query = prop.getProperty("searchProductBy");
+		query = query.replace("#", column);
+		try {
+			// 1. 쿼리문을 실행할 statement객체 생성
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, "%" + keyword + "%");
+
+			// 2. 쿼리문 전송, 실행결과 받기
+			rset = pstmt.executeQuery();
+
+			// 3. 받은 결과값들을 객체에 옮겨 저장하기
+			while (rset.next()) {
+				Product p = new Product();
+				// 컬럼명은 대소문자 구분이 없다.
+				p.setId(rset.getString("id"));
+				p.setBrand(rset.getString("brand"));
+				p.setName(rset.getString("name"));
+				p.setPrice(rset.getInt("price"));
+				p.setMonitorSize(rset.getInt("monitor_size"));
+				p.setOs(rset.getString("os"));
+				p.setStorage(rset.getInt("storage"));
+				p.setRegDate(rset.getDate("reg_date"));
+				p.setStock(rset.getInt("stock"));
+				list.add(p);
+			}
+
+		} catch (Exception e) {
+			// 사용자 정의 예외 던짐.
+			throw new ProductException("상품명 검색 오류! : " + e.getMessage(), e);
+
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+
+		return list;
+	}
+
+	public int insertProductDetail(Connection conn, Product product) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = prop.getProperty("insertProductDetail");
+
+		try {
+
+			// 1. 미완성쿼리문을 가지고 PreparedStatement객체생성
+			pstmt = conn.prepareStatement(query);
+			// 객체생성후 ? 부분 값대입.
+			pstmt.setString(1, product.getId());
+			pstmt.setString(2, product.getBrand());
+			pstmt.setString(3, product.getName());
+			pstmt.setInt(4, product.getPrice());
+			pstmt.setInt(5, product.getMonitorSize());
+			pstmt.setString(6, product.getOs());
+			pstmt.setInt(7, product.getStorage());
+
+			// 2. 쿼리문 실행, 실행결과 받기
+			result = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			// 사용자 정의 예외 던짐.
+			throw new ProductException("insertProductDetail 메소드 에러! : " + e.getMessage(), e);
+		} finally {
+			close(pstmt);
+		}
+
+		return result;
+	}
+
+	public int insertProductStock(Connection conn, Product product) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = prop.getProperty("insertProductStock");
+
+		try {
+
+			// 1. 미완성쿼리문을 가지고 PreparedStatement객체생성
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, product.getId());
+
+			// 2. 쿼리문 실행, 실행결과 받기
+			result = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			// 사용자 정의 예외 던짐.
+			throw new ProductException("상품재고 등록 오류! : " + e.getMessage(), e);
+		} finally {
+			close(pstmt);
+		}
+
+		return result;
+	}
+
+	public int updateProduct(Connection conn, Product p) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = prop.getProperty("updateProduct");
+
+		try {
+
+			// 1. 미완성쿼리문을 가지고 PreparedStatement객체생성
+			pstmt = conn.prepareStatement(query);
+			// 객체생성후 ? 부분 값대입.
+			pstmt.setString(1, p.getName());
+			pstmt.setInt(2, p.getPrice());
+			pstmt.setInt(3, p.getMonitorSize());
+			pstmt.setString(4, p.getOs());
+			pstmt.setInt(5, p.getStorage());
+			pstmt.setString(6, p.getId());
+
+			// 2. 쿼리문 실행, 실행결과 받기
+			result = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			// 사용자 정의 예외 던짐.
+			throw new ProductException("상품수정 오류! : " + e.getMessage(), e);
+		} finally {
+			close(pstmt);
+		}
+
+		return result;
+	}
+
+	public int deleteProduct(Connection conn, String productId) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = prop.getProperty("deleteProduct");
+
+		try {
+
+			// 1. 미완성쿼리문을 가지고 PreparedStatement객체생성
+			pstmt = conn.prepareStatement(query);
+			// 객체생성후 ? 부분 값대입.
+			pstmt.setString(1, productId);
+
+			// 2. 쿼리문 실행, 실행결과 받기
+			result = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			// 사용자 정의 예외 던짐.
+			throw new ProductException("상품삭제 오류! : " + e.getMessage(), e);
+		} finally {
+			close(pstmt);
+		}
+
+		return result;
+	}
+
+}

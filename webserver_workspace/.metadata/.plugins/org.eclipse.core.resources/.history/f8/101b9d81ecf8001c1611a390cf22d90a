@@ -1,0 +1,27 @@
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Map;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+public class MybatisTest {
+
+	
+
+	public static void main(String[] args) {
+		try (InputStream in = MybatisTest.class.getResourceAsStream("/mybatis-config.xml")) { 
+			SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(in); 
+			try (SqlSession session = factory.openSession()) { 
+				Map<String, Object> result = session.selectOne("sample.mybatis.selectTest", 1); 
+				System.out.println(result); 
+			} 
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+
+	}
+
+}

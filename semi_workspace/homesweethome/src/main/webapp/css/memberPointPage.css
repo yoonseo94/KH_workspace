@@ -1,0 +1,131 @@
+@charset "UTF-8";
+
+/************메뉴버튼설정css *********/
+<style>
+.mypage-wrap {
+    margin-top: 10px;
+}
+.all-content {
+	position: relative;
+    padding: 0 0 40px;
+}
+.myhome-nav {
+	position: relative;
+    margin: 0 auto;
+    background-color: #FFF;
+    width: 68%;
+    margin: 0 auto;
+}
+div {
+	display : black;
+}
+.myhome-nav-top {
+    font-size: 20px;
+    overflow: visible;
+}
+.page-navigation {
+    border-bottom: 1px solid #ededed;
+    width: 100%;
+    overflow: hidden;
+}
+.page-navigation>ul {
+    text-align: center;
+    white-space: nowrap;
+    list-style: none;
+}
+.navigation_btn {
+    display: inline-block;
+}
+.navigation_btn>a {
+    display: block;
+    padding: 0 20px;
+    font-weight: 700;
+    position: relative;
+    height: 10px;
+    line-height: 60px;
+    transition: color .15s ease;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+.page-navigation>ul {
+    text-align: center;
+    white-space: nowrap;
+}
+.navigation_btn>a.active, .navigation_btn>a:not(.active):hover {
+    color: #35c5f0;
+}
+.myhome-nav-bottom{
+	font-size:16px;
+}
+body, html {
+    line-height: 1;
+    font-family: OhouseSans, "Noto Sans KR", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: -0.4px;
+    font-size: 13px;
+}
+</style>
+<!-- 포인트내부css -->
+
+<style>
+.point-content {
+    margin: 30px auto;
+    max-width: 750px;
+    width: 100%;
+    padding: 0px 16px;
+    box-sizing: border-box;
+}
+.point-container {
+    padding: 24px 16px;
+    border: 1px solid rgb(234, 237, 239);
+    color: rgb(47, 52, 56);
+    width: 50%;
+    box-sizing: border-box;
+    border-radius: 8px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.title-area {
+	margin: 0;
+    padding: 0;
+}
+.point-title {
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 700;
+}
+.point-content {
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 700;
+    color: rgb(53, 197, 240);
+    margin-top: 4px;
+}
+.point-info {
+    max-width: 328px;
+    text-align: center;
+    margin: 16px auto 0px;
+    padding: 9px 0px;
+    background-color: rgb(247, 249, 250);
+    border-radius: 4px;
+}
+.point-info-con {
+    font-size: 14px;
+    line-height: 18px;
+    color: rgb(130, 140, 148);
+}
+b {
+	font-weight: 700;
+    color: rgb(47, 52, 56);
+    margin-left: 6px;
+}
+.presence-absence {
+    text-align: center;
+    margin: 80px auto 170px;
+    color: rgb(130, 140, 148);
+    font-size: 16px;
+    line-height: 20px;
+}

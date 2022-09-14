@@ -1,0 +1,197 @@
+package member.model.dao;
+
+import static common.JdbcTemplate.close;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
+
+import member.model.vo.Member;
+
+public class MemberDao {
+
+	public int insertMember(Connection conn, Member member) {
+		String sql = "insert into member "
+				   + "values(?, ?, ?, ?, ?, ?, default)";
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		try {
+			// 1. PreparedStatement 생성 (미완성 sql & 값대입)
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member.getId());
+			pstmt.setString(2, member.getName());
+			pstmt.setString(3, member.getGender());
+			pstmt.setDate(4, member.getBirthday());
+			pstmt.setString(5, member.getEmail());
+			pstmt.setString(6, member.getAddress());
+			
+			// 2. 실행 
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// 체크드예외를 언체크드예외로 전환해서 던지기
+			throw new RuntimeException(e); // 원래 발생한 예외를 감싸서(전환) 다시 던지기 -> service 트랜잭션처리용
+		} finally {
+			// 3. 자원반납(pstmt) - conn 반환하지마세요(트랜잭션 처리전입니다)
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public List<Member> findMemberByName(Connection conn, String name) {
+		String sql = "select * from member where name like ?";
+		List<Member> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		try {
+			// 1. PreparedStatement 객체 생성(미완성sql전달 & 값대입)
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%" + name + "%"); // where name like '%길동%'
+			// 2. 실행 
+			rset = pstmt.executeQuery();
+			// 3. ResultSet처리 -> Member객체 변환
+			while(rset.next()) {
+				Member member = new Member();
+				member.setId(rset.getString("id"));
+				member.setName(rset.getString("name"));
+				member.setGender(rset.getString("gender"));
+				member.setBirthday(rset.getDate("birthday"));
+				member.setEmail(rset.getString("email"));
+				member.setAddress(rset.getString("address"));
+				member.setRegDate(rset.getTimestamp("reg_date"));
+				list.add(member);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// 4. 자원반납(pstmt, rset)
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+
+	public List<Member> selectAll(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = "select * from member order by reg_date desc";
+		List<Member> list = new ArrayList<>();
+		
+		try {
+			// 1. PreparedStatment객체 생성 및 쿼리 완성
+			pstmt = conn.prepareStatement(sql);
+			
+			// 2. 실행 및 ResultSet처리
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				Member member = new Member();
+				// 컬럼명 대소문자 구분하지 않는다.
+				String id = rset.getString("ID");
+				member.setId(id);
+				member.setName(rset.getString("NAME"));
+				member.setGender(rset.getString("GENDER"));
+				member.setBirthday(rset.getDate("BIRTHDAY"));
+				member.setEmail(rset.getString("EMAIL"));
+				member.setAddress(rset.getString("ADDRESS"));				
+				member.setRegDate(rset.getTimestamp("REG_DATE"));
+				list.add(member);
+			}
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			// 3. 자원반납(rset, pstmt)
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+	
+	public int deleteMember(Connection conn, String id) {
+		String sql = "delete from member where id = ?"; 
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);		
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	/**
+	 * 컬럼명을 동적으로 변경하는 기능은 PreparedStatement에서 지원하지 않는다.
+	 * 
+	 * @param conn
+	 * @param id
+	 * @param colName
+	 * @param newValue
+	 * @return
+	 */
+	public int updateMember(Connection conn, String id, String colName, Object newValue) {
+		PreparedStatement pstmt = null;
+		String sql = "update member set # = ? where id = ?";
+		sql = sql.replace("#", colName); // 컬럼명 설정 update member set email = ? where id = ?
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			// name, email, address : pstmt.setString(1, newValue)
+			// birthday : pstmt.setDate(1, newValue)
+			pstmt.setObject(1, newValue); // 상응하는 db타입값으로 자동 대입
+			pstmt.setString(2, id);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public Member selectOne(Connection conn, String id) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Member member = null;
+		String sql = "select * from member where id = ?";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				id = rset.getString("id");
+				String name = rset.getString("name");
+				String gender = rset.getString("gender");
+				Date birthday = rset.getDate("birthday");
+				String email = rset.getString("email");
+				String address = rset.getString("address");
+				Timestamp regDate = rset.getTimestamp("reg_date");
+				member = new Member(id, name, gender, birthday, email, address, regDate);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		return member;
+	}
+
+
+}

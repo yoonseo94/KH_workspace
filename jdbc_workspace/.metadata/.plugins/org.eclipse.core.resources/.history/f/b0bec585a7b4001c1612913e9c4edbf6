@@ -1,0 +1,51 @@
+package com.kh.employee.model.dao;
+
+import static common.JdbcTemplate.close;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.kh.employee.model.vo.Employee;
+
+
+public class EmployeeDao {
+
+	public List<Employee> findByJobName(String string) {
+		String sql = "select * from member where name like ?";
+		List<Employee> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+
+		try {
+			// 1. PreparedStatement 객체 생성(미완성sql전달 & 값대입)
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%" + name + "%"); // where name like '%길동%'
+			// 2. 실행
+			rset = pstmt.executeQuery();
+			// 3. ResultSet처리 -> Member객체 변환
+			while (rset.next()) {
+				Member member = new Member();
+				member.setId(rset.getString("id"));
+				member.setName(rset.getString("name"));
+				member.setGender(rset.getString("gender"));
+				member.setBirthday(rset.getDate("birthday"));
+				member.setEmail(rset.getString("email"));
+				member.setAddress(rset.getString("address"));
+				member.setRegDate(rset.getTimestamp("reg_date"));
+				list.add(member);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// 4. 자원반납(pstmt, rset)
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+
+}

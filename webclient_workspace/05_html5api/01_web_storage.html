@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebStorage</title>
+</head>
+<body>
+  <h1>WebStorage</h1>
+  <!-- 
+    window.localStorage - 특정사이트에 대해 브라우져 영속적으로 데이터를 저장/관리
+    window.sessionStorage - 특정사이트에 대해 브라우져 접속한 기간동안만 데이터를 저장/관리(브라우져 닫으면 자동삭제)
+
+    - cookie 대비 차이점은 저장된 데이터를 서버로 절대 전송하지 않는다.
+  -->
+  
+  <fieldset>
+    <legend>data crud</legend>
+    <input type="text" id="key" placeholder="key를 입력하세요.">
+    <br>
+    <input type="text" id="value" placeholder="value를 입력하세요.">
+    <hr>
+    <button id="btn1">저장</button>
+    <button id="btn2">삭제</button>
+    <button id="btn3">조회</button>
+    <button id="btn4" onclick="localStorage.clear();">전체삭제</button>
+  </fieldset>
+  <script>
+  /**
+   * key는 식별자, value는 문자열로 저장
+   * 별도의 수정메소드는 존재하지 않는다. 동일한 key값을 사용하면, 덮어써진다.
+   */
+  btn1.addEventListener('click', () => {
+    // 1.유효성검사
+    if(!key.value || !value.value) 
+      return;
+    
+    // 2.저장
+    // localStorage.setItem(key.value, value.value); // setItem 메소드 사용
+    localStorage[key.value] = value.value; // 객체 속성 직접 등록 
+
+    // 3.초기화
+    key.value = "";
+    value.value = "";
+  });
+
+  btn2.addEventListener('click', () => {
+    if(!key.value) return;
+
+    const itemVal = localStorage.getItem(key.value);
+    // const itemVal = localStorage[key.value];
+    // console.log(itemVal); // 존재하지 않으면 null을 리턴
+
+    if(itemVal){
+      localStorage.removeItem(key.value);
+      alert(`[${key.value}] item을 삭제했습니다.`);
+    }
+    else {
+      alert('해당 item이 존재하지 않습니다.');
+    }
+
+    // 3.초기화
+    key.value = "";
+    value.value = "";
+
+  });
+
+  btn3.addEventListener('click', () => {
+    if(!key.value) return;
+
+    const itemVal = localStorage.getItem(key.value);
+    if(itemVal){
+      value.value = itemVal;
+    }
+    else {
+      alert('해당 item이 존재하지 않습니다.');
+      key.value = "";
+      value.value = "";
+    }
+  });
+  </script>
+  <br><br>  
+  <button id="btn5">객체/배열 저장</button>
+  <script>
+  btn5.addEventListener('click', () => {
+    const user = {
+      id : "abcde",
+      name : '홍길동',
+      married : false,
+      age : 30,
+      sns : ['instagram', 'tiktok'],
+      job : {
+        name : '개발자',
+        career : 10
+      }
+    };
+
+    // json으로 변환후 저장
+    // JSON.stringify js -> json
+    localStorage.setItem('user', JSON.stringify(user));
+
+    // JSON.parse json -> js
+    const itemUser = JSON.parse(localStorage.getItem('user'));
+    console.log(typeof itemUser, itemUser);
+
+    const arr = [1, 2, 3, ["a", "b", "c"]];
+    localStorage.setItem('arr', JSON.stringify(arr));
+
+    const itemArr = JSON.parse(localStorage.getItem('arr'));
+    console.log(typeof itemArr, itemArr);
+  });
+  </script>
+  
+  <h2>방명록</h2>
+  <form name="guestbookFrm" action="javascript:saveGuestbook();">
+    <fieldset>
+      <legend>방명록 폼</legend>
+      <div>
+        <label for="username">이름 : </label>
+        <input type="text" name="username" id="username">
+      </div>
+      <div>
+        <label for="content">내용 : </label>
+        <input type="text" name="content" id="content">
+      </div>
+      <div>
+        <button type="submit">제출</button>
+      </div>
+    </fieldset>
+  </form>
+
+  <table id="tb-guestbook">
+    <!-- thead>tr>th*4 -->
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>이름</th>
+        <th>내용</th>
+        <th>작성일시</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <style>
+  table {
+    border: 1px solid #000;
+    border-collapse: collapse;
+    margin: 10px 0;
+  }
+  th, td {
+    border: 1px solid #000;
+    padding: 5px;
+  }
+  </style>
+  <script>
+  /**
+   * 폼 유효성검사는 submit 핸들러에서 진행한다.
+   * 
+   * - addEventListener : e.preventDefault()
+   * - onsubmit : return false, e.preventDefault()
+   */
+  document.guestbookFrm.addEventListener('submit', (e) => {
+    const usernameVal = document.querySelector("#username").value;
+    const contentVal = document.querySelector("#content").value;
+    if(!usernameVal) {
+      alert("이름을 작성해주세요.");
+      e.preventDefault();
+      return;
+    }
+    if(!contentVal) {
+      alert("내용을 작성해주세요.");
+      e.preventDefault();
+      return;
+    }
+  });
+
+  /**
+   * 제출
+   */
+  const saveGuestbook = () => {
+    console.log("saveGuestbook 호출!");
+    const usernameVal = document.querySelector("#username").value;
+    const contentVal = document.querySelector("#content").value;
+
+    // 방명록객체 생성
+    const guestbook = new Guestbook(usernameVal, contentVal);
+    // console.log(guestbook);
+
+    // guestbooks배열 관리
+    const guestbooks = JSON.parse(localStorage.getItem('guestbooks')) || [];
+    // console.log(guestbooks);
+    guestbooks.push(guestbook);
+
+    localStorage.setItem('guestbooks', JSON.stringify(guestbooks));
+
+    // 폼초기화
+    document.guestbookFrm.reset();
+
+    // 화면 render
+    renderGuestbook(guestbooks);
+  };
+
+  class Guestbook {
+    constructor(username, content, datetime = Date.now()){
+      this.username = username;
+      this.content = content;
+      this.datetime = datetime;
+    }
+  }
+
+  const renderGuestbook = (guestbooks = JSON.parse(localStorage.getItem('guestbooks'))) => {
+    const tbody = document.querySelector("#tb-guestbook tbody");
+    tbody.innerHTML = ""; // 초기화
+
+    guestbooks.forEach((guestbook, index) => {
+      const {username, content, datetime} = guestbook;
+      const html = `<tr>
+        <td>${index + 1}</td>  
+        <td>${username}</td>  
+        <td>${content}</td>  
+        <td>${formatDatetime(datetime)}</td>  
+      </tr>`;
+      tbody.innerHTML += html;
+    });
+
+  }
+
+  const formatDatetime = (millis) => {
+    const d = new Date(millis);
+    const f = (n) => n < 10 ? "0" + n : n;
+    const MM = f(d.getMonth() + 1);
+    const dd = f(d.getDate());
+    const HH = f(d.getHours());
+    const mm = f(d.getMinutes());
+    return `${MM}/${dd} ${HH}:${mm}`; 
+  };
+
+  window.addEventListener('load', () => {
+    renderGuestbook();
+  });
+  </script>
+</body>
+</html>

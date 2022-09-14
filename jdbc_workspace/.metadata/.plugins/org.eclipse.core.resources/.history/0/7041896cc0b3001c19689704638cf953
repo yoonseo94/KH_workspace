@@ -1,0 +1,9 @@
+package com.kh.product.model.vo.sample;
+
+public class Product {
+
+	private ProductDetail productDetail;
+	private ProductStock productStock;
+	
+	
+}

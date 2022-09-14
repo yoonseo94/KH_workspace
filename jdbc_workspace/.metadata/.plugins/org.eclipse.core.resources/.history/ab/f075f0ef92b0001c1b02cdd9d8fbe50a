@@ -1,0 +1,16 @@
+package member.model.service;
+
+import member.model.dao.MemberDao;
+
+/**
+ * service 클래스
+ * 
+ *
+ */
+public class MemberService {
+
+	private MemberDao memberDao = new MemberDao();
+	
+	
+	
+}

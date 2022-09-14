@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>filter</title>
+  <script src="js/jquery-3.6.0.js"></script>
+</head>
+<body>
+  <h1>filter</h1>
+  <div>
+    <p id="p1" class="group1">안녕1</p>
+    <p id="p2" class="group1">안녕2</p>
+    <p id="p3" class="group2">안녕3</p>
+    <p id="p4" class="group2">안녕4</p>
+    <p id="p5" class="group1 group2">안녕5</p>
+  </div>
+  <button id="btn1">filter</button>
+  <button id="btn2">first | last</button>
+  <button id="btn3">eq</button>
+  <button id="btn4">not</button>
+  <script>
+  /**
+   * filter(selector)
+   * filter(callback)
+   */
+  $(btn1).click(() => {
+    const $p = $("p");
+    // console.log($p);
+
+    // 선택자
+    // $p
+    //   .filter(".group1") // #p1, #p2, #p5
+    //   .css("color", "hotpink")
+    //   .filter(":gt(0)") // #p2, #p5
+    //   .css("background-color", "blue");
+
+    // callback함수
+    $p
+      .filter((index, p) => {
+        console.log(index, p);
+        return index % 2 == 0;  // false를 반환하면 제거
+      })
+      .css("background-color", "cyan");
+
+  });
+
+  /**
+   * first | last
+   */ 
+  $(btn2).click(() => {
+    const $p = $("p");
+
+    $p.first().css("background-color", "springgreen");
+    $p.last().css("background-color", "yellowgreen");
+
+  });
+
+  /**
+   * eq(index)
+   * end
+   */
+  $(btn3).click(() => {
+    console.log(
+      $("p")
+        .eq(2) // #p3
+        .css("background-color", "magenta")
+        .end() // 이전 상태로 돌아감 (prevObject속성상태)
+        .css("text-decoration", "underline")
+    );
+  });
+
+  /**
+   * not(selector)
+   */
+  $(btn4).click(() => {
+    $("p")
+      .not(".group1.group2") // #p1, #p2, #p3, #p4
+      .css("text-decoration", "underline");
+  });
+  </script>
+</body>
+</html>

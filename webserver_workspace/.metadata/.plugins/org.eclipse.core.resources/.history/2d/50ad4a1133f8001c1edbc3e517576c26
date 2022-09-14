@@ -1,0 +1,11 @@
+package com.kh.student.controller;
+
+import com.kh.common.AbstractController;
+
+public class StudentTotalCountController extends AbstractController {
+
+	public StudentTotalCountController() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

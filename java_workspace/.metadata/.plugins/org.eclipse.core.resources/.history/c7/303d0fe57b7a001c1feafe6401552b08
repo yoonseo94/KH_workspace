@@ -1,0 +1,15 @@
+package kh.java.cast;
+
+/**
+ * 컴퓨터 연산원리
+ * 
+ * 
+ *
+ */
+public class CastingStudy {
+
+	public static void main(String[] args) {
+		
+	}
+	
+}

@@ -1,0 +1,5 @@
+package kh.java.pattern.strategy;
+
+public class Person {
+
+}

@@ -1,0 +1,58 @@
+@charset "UTF-8";
+body{
+font-family: 'Noto Sans KR', sans-serif;
+}
+#board-container{margin-top:5rem; margin-left:39rem;}
+h1{font-size:21px;}
+h3{font-size:17px;}
+.title-view{margin-left:23rem;}
+.content-view{margin-left:23.5rem;}
+
+div.comment-container button#btn-comment-enroll1 {
+	width:5rem; height:3.5rem; color:white; background:#35C5F0; position:relative; top:-68px;
+	border:0; outline:0;
+	}
+
+#btn-comment-enroll1:hover{cursor: pointer;}
+
+textarea::placeholder{font-size: small;font-color : #EAEAEA;font-family: 'Noto Sans KR', sans-serif;}
+.knowhow-comment{border: 1px solid #D5D5D5; margin-top:1rem; margin-bottom: 3rem;}
+.knowhow-comment:focus{border: 1px solid #36C4F2; outline:none;}
+
+.btn-upd:hover,.btn-del:hover{cursor:pointer;}
+.btn-upd{border: 1px solid #35c5f0;border-radius: 0.25rem;cursor: pointer;color: #35c5f0;font-size: 1rem;
+font-weight:bold; background: white;width: 5.1rem; height: 2.7rem; margin-right:0.52rem; margin-left:1rem;}
+.btn-del{border: 1px solid #35c5f0;border-radius: 0.25rem;cursor: pointer;color: #35c5f0;font-size: 1rem;
+font-weight:bold; background: white;width: 5.1rem; height: 2.7rem; margin-right:0.52rem;}
+	
+/*댓글테이블*/
+table#tbl-comment{width:580px; border-collapse:collapse;} 
+table#tbl-comment tr td{border-bottom:1px solid #EAEDEF; border-top:1px solid; padding:5px; text-align:left; line-height:120%;}
+table#tbl-comment tr td:first-of-type{padding: 5px 5px 5px 50px;}
+table#tbl-comment tr td:last-of-type {text-align:right; width: 100px;}
+table#tbl-comment button.btn-reply{display:none;}
+table#tbl-comment tr:hover {background:#EFEDEE;}
+table#tbl-comment tr:hover button.btn-reply{display:inline;}
+table#tbl-comment sub.comment-writer {color:#211d1d; font-size:14px; font-weight: bold;}
+table#tbl-comment sub.comment-date {color:#353131; font-size:10px}
+
+table#tbl-comment tr.level2 {color:black; font-size: 14px; background-color:#ebf1f4;}
+table#tbl-comment tr.level2 td:first-of-type{padding-left:100px;}
+table#tbl-comment tr.level2 sub.comment-writer {color:#211d1d; font-size:14px}
+table#tbl-comment tr.level2 sub.comment-date {color:#353131; font-size:10px}
+table#tbl-comment button.btn-reply{display:none; flex-shrink: 0;display: inline-flex;justify-content: center;align-items: center;width: 3.5rem;height: 1.7rem;background-color:#FFFFFF;
+color: #35c5f0;font-size: 0.8rem; font-weight:bold;vertical-align: middle;border: 1px solid #35c5f0;border-radius: 0.25rem;box-sizing: border-box;
+cursor: pointer; margin-right: 0.1rem; margin-bottom:0.2rem;}
+
+table#tbl-comment button.btn-delete{display:none; flex-shrink: 0;display: inline-flex;justify-content: center;align-items: center;width: 3.5rem;height: 1.7rem;background-color:#FFFFFF;
+color: #35c5f0;font-size: 0.8rem; font-weight:bold;vertical-align: middle;border: 1px solid #35c5f0;border-radius: 0.25rem;box-sizing: border-box;
+cursor: pointer; margin-right: 0.1rem;}
+
+답글관련
+table#tbl-comment textarea{margin: 4px 0 0 0;}
+table#tbl-comment button.btn-comment-enroll2{width:60px; height:23px; color:white; 
+background:#35C5F0; position:relative; top:-5px; left:10px; border:0; outer:0;}
+
+삭제버튼관련
+table#tbl-comment button.btn-delete{background:red; color:white; display:none;}
+table#tbl-comment tr:hover button.btn-delete{display:inline;}

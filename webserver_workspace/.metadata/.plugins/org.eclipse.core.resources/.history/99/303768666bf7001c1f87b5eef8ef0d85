@@ -1,0 +1,11 @@
+package kh.java.pattern.strategy;
+
+public class Snake extends Pet {
+
+	@Override
+	public String getReply() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

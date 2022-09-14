@@ -1,0 +1,8 @@
+package com.kh.employee.model.vo;
+
+public class Location {
+	private String localCode;
+	private String localName;
+	private Nation nation;
+	
+}

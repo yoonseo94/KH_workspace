@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      input,
+      textarea {
+        width: 100%;
+      }
+      .notice {
+        border: 1px solid black;
+      }
+      .notice th, .notice td {
+        border: 1px solid black;
+      }
+      .notice thead,   .notice tfoot {
+        color: #fff;
+        background-color: lightsalmon;
+      }
+      .notice thead {
+        height: 40px;
+      }
+      .notice tbody {
+        background-color: cornsilk;
+      }
+      .title {
+        width: 400px;
+      }
+      .writer {
+        width: 100px;
+      }
+      .reg-date {
+        width: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>포트폴리오 문제</h1>
+    <hr />
+    <form action="insert.no" method="POST">
+      <fieldset>
+        <legend>공지사항 작성하기</legend>
+        <table>
+          <tbody>
+            <tr>
+              <th>
+                <label for="title">제목</label>
+              </th>
+              <td>
+                <input
+                  type="text"
+                  name="title"
+                  id="title"
+                  placeholder="제목을 입력하시오."
+                  required
+                /><br />
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <label for="content">내용</label>
+              </th>
+              <td>
+                <textarea
+                  name="content"
+                  id="content"
+                  cols="30"
+                  rows="10"
+                  placeholder="내용을 입력하시오."
+                  required
+                  style="resize: none"
+                ></textarea>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <label for="upFile">첨부파일</label>
+              </th>
+              <td>
+                <input type="file" name="upFile" id="upFile" />
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <th colspan="2">
+              <button type="submit">작성하기</button>
+            </th>
+          </tfoot>
+        </table>
+      </fieldset>
+    </form>
+    <hr />
+
+    <table class="notice">
+      <thead>
+        <tr>
+          <th>번호</th>
+          <th colspan="2">제목</th>
+          <th>작성자</th>
+          <th>작성일</th>
+          <th>조회수</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>9</td>
+          <td class="title">공지사항 제목 9</td>
+          <td>
+            <button>바로가기</button>
+          </td>
+          <td class="writer">user01</td>
+          <td class="reg-date">2021-03-29</td>
+          <td>34</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td class="title">공지사항 제목 6</td>
+          <td>
+            <button>바로가기</button>
+          </td>
+          <td class="writer">answ445</td>
+          <td class="reg-date">2021-03-12</td>
+          <td>67</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td class="title">공지사항 제목 3</td>
+          <td>
+            <button>바로가기</button>
+          </td>
+          <td class="writer">testg12</td>
+          <td class="reg-date">2021-03-01</td>
+          <td>98</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td class="title">공지사항 제목 2</td>
+          <td>
+            <button>바로가기</button>
+          </td>
+          <td class="writer">palwe3</td>
+          <td class="reg-date">2021-01-02</td>
+          <td>85</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td class="title">공지사항 제목 1</td>
+          <td>
+            <button>바로가기</button>
+          </td>
+          <td class="writer">xml23</td>
+          <td class="reg-date">2020-12-24</td>
+          <td>124</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="4">전체공지사항 갯수</th>
+          <th colspan="5">5개</th>
+        </tr>
+      </tfoot>
+    </table>
+  </body>
+</html>

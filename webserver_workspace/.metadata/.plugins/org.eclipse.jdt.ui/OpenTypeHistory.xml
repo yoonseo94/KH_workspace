@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<typeInfoHistroy>
+    <typeInfo handle="=hello-mybatis/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.kh.student.model.service{StudentService.java[StudentService" modifiers="513" timestamp="1656639398811"/>
+    <typeInfo handle="=hello-mybatis/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.kh.student.model.dao{StudentDao.java[StudentDao" modifiers="513" timestamp="1656639476411"/>
+    <typeInfo handle="=hello-mybatis/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.kh.emp.model.service{EmpService.java[EmpService" modifiers="513" timestamp="1656909846863"/>
+    <typeInfo handle="=hello-mybatis/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.kh.emp.model.dao{EmpDao.java[EmpDao" modifiers="513" timestamp="1656909973089"/>
+</typeInfoHistroy>

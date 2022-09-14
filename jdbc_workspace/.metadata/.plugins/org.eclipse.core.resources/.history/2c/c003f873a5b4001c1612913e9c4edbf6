@@ -1,0 +1,10 @@
+package com.chun.student.model.vo.intergrated;
+
+public class GradeOne {
+	private String termNo;
+	private String studentNo;
+	private String studentName;
+	private String classNo;
+	private String className;
+	private double point;
+}

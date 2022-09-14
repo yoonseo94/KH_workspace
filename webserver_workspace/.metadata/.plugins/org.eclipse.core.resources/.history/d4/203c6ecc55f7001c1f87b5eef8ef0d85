@@ -1,0 +1,7 @@
+package com.kh.student;
+
+import com.kh.common.AbstractController;
+
+public class StudentSelectListController extends AbstractController {
+
+}

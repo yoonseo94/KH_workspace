@@ -1,0 +1,88 @@
+@charset "UTF-8";
+body{font-family: 'Noto Sans KR', sans-serif;}
+p{color:#494646; font-size:14px;}
+.btn-write{background-color: #00B8F0; border:none;height:40px;width: 134.65px;border:0;outline: none; 
+text-align :center;font-size: 16px;color:white;font-weight: bold;border-radius: 8px; margin-bottom: 1.8rem;}
+.write-btn{margin-left:72rem;}
+.btn-write:hover{cursor: pointer;}
+a{text-decoration: none; color:#191818; font-size:17px;}
+.btn-go{color:#757575; font-weight:bold; font-size:18.5px; background-color: #F5F5F5; border:none; 
+border-radius:8%; margin-left:10px; padding:10px;}
+.btn-go:hover{background-color:#E7F4FC;  color:#35C2F0; font-weight:bold; font-size:18.5px; cursor: pointer}
+#board_top{margin-top:6rem; margin-left:15.9rem;}
+.category{ margin-left:25rem; margin-bottom: 50rem; margin-right:2rem;}
+.thumbnail:hover{transform: scale(1.03);-webkit-transform: scale(1.03);
+-moz-transform: scale(1.03);
+  -ms-transform: scale(1.03);
+  -o-transform: scale(1.03);
+/*   overflow:hidden; */
+  }
+ .thumbnail{width:225px; display: block; float:left; margin-left:1rem; margin-right: 3rem; border-radius: 8%;}
+.thumb_nail{border-radius: 8%;  width:260px; height:242px;}
+
+/*작성하기*/
+#knowhow-enroll-container{margin-left:36rem; margin-top: 5.2rem;}
+.khtitle:focus,.khnickname:focus,.khthumbnail:focus,.khcontent:focus{border: 1px solid #35C5F0; outline:none;}
+.khtitle:hover,.khnickname:hover,.khthumbnail:hover,.khcontent:hover{border: 1px solid #36C4F2; outline:none;}
+.khtitle{border: 1px solid #D5D5D5; margin-bottom: 1rem; height:2rem; width:15.2rem;}
+.khnickname{border: 1px solid #D5D5D5; margin-bottom: 1rem; height:1.5rem;}
+.khthumbnail{border: 1px solid #D5D5D5; margin-bottom: 1rem; height:1.5rem;}
+.khcontent{border: 1px solid #D5D5D5; margin-bottom: 1rem; margin-top: 1.2rem;}
+#categoryNo{border: 1px solid #D5D5D5;outline:none; margin-left:1.45rem; margin-bottom:1rem; width:6rem; height:2.2rem;}
+.kh-enroll{border: 1px solid #35c5f0;border-radius: 0.25rem;cursor: pointer;color: #35c5f0;font-size: 1rem;
+font-weight:bold; background: white;width: 5.8rem; height: 2.7rem;}
+
+
+/**수정하기**/
+#knowhow-up-container{margin-left:36rem; margin-top: 5.2rem;}
+.kh-update:hover,.kh-cancle:hover{cursor:pointer;}
+.kh-title:focus,.kh-nickname:focus,.kh-thumbnail:focus,.kh-content:focus{border: 1px solid #35C5F0; outline:none;}
+.kh-title:hover,.kh-nickname:hover,.kh-thumbnail:hover,.kh-content:hover{border: 1px solid #36C4F2; outline:none;}
+.kh-title{border: 1px solid #D5D5D5; margin-bottom: 1rem; height:2rem; width:15.2rem;}
+.kh-nickname{border: 1px solid #D5D5D5; margin-bottom: 1rem; height:1.5rem;}
+.kh-thumbnail{border: 1px solid #D5D5D5; margin-bottom: 1rem; height:1.5rem;}
+.kh-content{border: 1px solid #D5D5D5; margin-bottom: 1rem; margin-top: 1.2rem;}
+#categoryNo{border: 1px solid #D5D5D5;outline:none; margin-left:1.45rem; margin-bottom:1rem;}
+.kh-update{border: 1px solid #35c5f0;border-radius: 0.25rem;cursor: pointer;color: #35c5f0;font-size: 1rem;
+font-weight:bold; background: white;width: 5.8rem; height: 2.7rem;} 
+.kh-cancle{border: 1px solid #35c5f0;border-radius: 0.25rem; color: #35c5f0; font-size: 1rem;
+font-weight:bold; background: white;width: 3.1rem; height: 2.2rem; margin-right:0.52rem;}
+
+
+
+  .filebox .upload-name {
+    display: inline-block;
+    height: 40px;
+    padding: 0 10px;
+    vertical-align: middle;
+    border: 1px solid #dddddd;
+    width: 78%;
+    color: #999999;
+}
+.filebox label {
+    display: inline-block;
+    padding: 0.41rem 0.82rem;
+    color: #fff;
+    vertical-align: middle;
+    background-color: #35c5f0;
+    opacity:0.87;
+    cursor: pointer;
+    height: 1.4rem;
+    margin-left: 1px;
+    margin-top:0.3rem;
+}
+  .filebox input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
+  
+  
+
+
+
+
+

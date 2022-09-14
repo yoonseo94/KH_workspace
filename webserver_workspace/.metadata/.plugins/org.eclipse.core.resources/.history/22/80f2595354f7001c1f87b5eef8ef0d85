@@ -1,0 +1,30 @@
+package com.kh.student.controller;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.kh.common.AbstractController;
+
+/**
+ *  
+ *  GET /mybatis/student/studentEnroll.do -> StudentEntrollController
+ *  POST /mybatis/student/studentEnroll.do -> StudentEntrollController
+ *
+ */
+public class StudentEnrollController extends AbstractController {
+	
+	@Override
+	public String doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		return "/WEB-INF/views/student/studentEnroll.jsp";
+	}
+	
+	@Override
+		public String doPost(HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException {
+			// db insert 관련 
+			return "redirect:/student/studentEnroll.do";
+		}
+}

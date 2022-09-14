@@ -1,0 +1,39 @@
+@charset "UTF-8";
+#product-input-container{width: 60%; margin: 0 auto; font-family: 'Noto Sans KR', sans-serif;}
+#title-wrapper{width: 18%; margin: 0 auto;}
+#cont-title{ font-size: 3rem;}
+
+#enroll-submit-btn{
+	width: 6rem;
+	height: 2.2rem;
+	font-size: 1.1rem;
+	color: #fff;
+	border: none;
+	border-radius: 0.3rem;
+	background-color:  #34C5F0;
+	cursor:pointer;
+	padding: 0 0.5rem;
+}
+
+.findId-btn{
+	width: 6rem;
+	height: 2.2rem;
+	font-size: 1.1rem;
+	color: #fff;
+	border: none;
+	border-radius: 0.3rem;
+	background-color:  #34C5F0;
+	cursor:pointer
+} 
+#tbl-input-view input:focus{ outline: none; border: 2px solid #34C5F0;}
+.label-status{ font-size: 1.5rem;}
+#enroll-submit-btn:hover, .findId-btn:hover{
+	font-weight: bold;
+}
+.hr1{
+	border: 1px solid  #34C5F0;
+}
+#tbl-input-view{width: 40%; margin: 0 auto;}
+.tbl-input{height: 2.2rem; width: 11rem; border: 1px solid #34C5F0; border-radius: 0.3rem; font-weight: bold; text-align: center;}
+#tbl-input-view th, #tbl-input-view td{height: 3rem; padding: 0.15rem; text-align:center;}
+#tbl-input-view th{font-size: 1.2rem;}
